@@ -1,0 +1,12 @@
+Ship
+	5 nodes? 9x9?
+	fragmentation occurs at nodes
+	deteriation is shown possibly by wires that are attached to ship 
+
+Players
+	1 mouse 1 keyboard/controller minimum
+	looking to further more keyboard/controllers
+	
+	Mouse player does external tasks, keyboard players do internal tasks
+
+Breanna - planning to work on player movement (keyboard only)
