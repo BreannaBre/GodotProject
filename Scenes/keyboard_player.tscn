@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cgay1buyynid2" path="res://icon.svg" id="2_3clhs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_emn4l"]
+radius = 60.0
+height = 128.0
 
 [node name="KeyboardPlayer" type="CharacterBody2D"]
 position = Vector2(240, 98)
@@ -12,5 +14,5 @@ script = ExtResource("1_vrr3s")
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_emn4l")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_3clhs")

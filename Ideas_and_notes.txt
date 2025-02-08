@@ -9,4 +9,4 @@ Players
 	
 	Mouse player does external tasks, keyboard players do internal tasks
 
-Breanna - planning to work on player movement (keyboard only)
+Breanna - Working on ship mechanics (kinda a blueprint)
