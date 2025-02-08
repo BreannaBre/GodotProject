@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://ba73xxekccsg"]
+[gd_scene load_steps=4 format=3 uid="uid://ba73xxekccsg"]
 
-[node name="KeyboardPlayer" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/keyboard_player.gd" id="1_vrr3s"]
+[ext_resource type="Texture2D" uid="uid://cgay1buyynid2" path="res://icon.svg" id="2_3clhs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_emn4l"]
+
+[node name="KeyboardPlayer" type="CharacterBody2D"]
+position = Vector2(240, 98)
+script = ExtResource("1_vrr3s")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_emn4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3clhs")
