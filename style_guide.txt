@@ -1,3 +1,5 @@
+https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
+
 For visibility of direct descendants of main.tscn:
 	"CanvasItem -> Ordering -> Z Index" should follow the following conventions:
 	(please note that these are effective Z indices)
