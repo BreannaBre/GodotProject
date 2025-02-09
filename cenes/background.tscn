@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://rj3h28pvb2lv"]
+[gd_scene load_steps=4 format=3 uid="uid://rj3h28pvb2lv"]
 
-[ext_resource type="Texture2D" uid="uid://dngp2m2ps7d3t" path="res://assets/A_black_image.jpg" id="1_yxttq"]
 [ext_resource type="Script" path="res://src/parallax_movement.gd" id="2_85fmn"]
 [ext_resource type="Texture2D" uid="uid://br032qeqaihy7" path="res://assets/far_stars.svg" id="2_svi8x"]
 [ext_resource type="Texture2D" uid="uid://bh8k0gx1xne7o" path="res://assets/near_stars.svg" id="3_8laf4"]
@@ -12,8 +11,19 @@
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(3000, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("1_yxttq")
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1632.0
+offset_top = -1224.0
+offset_right = 1632.0
+offset_bottom = 1224.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(3000, 0)
