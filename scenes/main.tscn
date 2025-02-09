@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbpnkpjcgp3qs"]
+[gd_scene load_steps=4 format=3 uid="uid://cbpnkpjcgp3qs"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_rjrnr"]
-[ext_resource type="PackedScene" uid="uid://ba73xxekccsg" path="res://scenes/keyboard_player.tscn" id="2_a0a1u"]
+[ext_resource type="PackedScene" uid="uid://ba73xxekccsg" path="res://scenes/keyboard_player.tscn" id="2_bfkgg"]
+[ext_resource type="PackedScene" uid="uid://rj3h28pvb2lv" path="res://scenes/background.tscn" id="3_tf8w6"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rjrnr")
@@ -11,3 +12,5 @@ position = Vector2(505, 41)
 
 [node name="RoomsNode" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="Node2DRenderSceneBuffersConfiguration" parent="." instance=ExtResource("3_tf8w6")]
