@@ -1,18 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba73xxekccsg"]
 
-[ext_resource type="Script" path="res://Scenes/keyboard_player.gd" id="1_vrr3s"]
-[ext_resource type="Texture2D" uid="uid://cgay1buyynid2" path="res://icon.svg" id="2_3clhs"]
+[ext_resource type="Script" path="res://src/keyboard_player.gd" id="1_vrr3s"]
+[ext_resource type="Texture2D" uid="uid://cgay1buyynid2" path="res://assets/icon.svg" id="2_3clhs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_emn4l"]
-radius = 60.0
-height = 128.0
+radius = 9.0
+height = 18.0
 
 [node name="KeyboardPlayer" type="CharacterBody2D"]
-position = Vector2(240, 98)
+z_index = 4
 script = ExtResource("1_vrr3s")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_emn4l")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(-7.15256e-07, 1.66893e-06)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3clhs")

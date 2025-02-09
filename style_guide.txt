@@ -1,0 +1,9 @@
+For visibility of direct descendants of main.tscn:
+	"CanvasItem -> Ordering -> Z Index" should follow the following conventions:
+	(please note that these are effective Z indices)
+		0: background
+		1: ship background
+		2: ship rooms
+		3: enemies
+		4: players
+		5: ship room decorations
