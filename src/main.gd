@@ -1,6 +1,6 @@
 extends Node2D
 
-const gunRoomScene := preload("res://scenes/gun_room.tscn")
+const gunRoomScene := preload("res://Scenes/gun_room.tscn")
 var rooms: Node
 
 # Called when the node enters the scene tree for the first time.
