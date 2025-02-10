@@ -1,0 +1,104 @@
+[gd_scene load_steps=21 format=3 uid="uid://dw1hldrb7563r"]
+
+[ext_resource type="Script" path="res://src/title_screen.gd" id="1_li7gw"]
+[ext_resource type="Texture2D" uid="uid://djiiknuwh4t66" path="res://assets/background_starry.png" id="1_xfhsh"]
+[ext_resource type="Texture2D" uid="uid://d4ju1qsyd837s" path="res://assets/blue_planet_frames/blue_planet_frame0000.png" id="2_3whfs"]
+[ext_resource type="Texture2D" uid="uid://d3xgt51fh07aw" path="res://assets/blue_planet_frames/blue_planet_frame0001.png" id="3_f78wx"]
+[ext_resource type="Texture2D" uid="uid://bxal18i3c3nkg" path="res://assets/blue_planet_frames/blue_planet_frame0002.png" id="4_u1ow0"]
+[ext_resource type="Texture2D" uid="uid://cw2u4fxwwgqlw" path="res://assets/blue_planet_frames/blue_planet_frame0003.png" id="5_ave48"]
+[ext_resource type="Texture2D" uid="uid://c30w0wj77q554" path="res://assets/blue_planet_frames/blue_planet_frame0004.png" id="6_28fyv"]
+[ext_resource type="Texture2D" uid="uid://b2tejan5fofxm" path="res://assets/blue_planet_frames/blue_planet_frame0005.png" id="7_7roua"]
+[ext_resource type="Texture2D" uid="uid://d4j808w6rh6bs" path="res://assets/blue_planet_frames/blue_planet_frame0006.png" id="8_30v16"]
+[ext_resource type="Texture2D" uid="uid://v6myy2dhyxxn" path="res://assets/blue_planet_frames/blue_planet_frame0007.png" id="9_x0vln"]
+[ext_resource type="Texture2D" uid="uid://c0c467d8c1ti4" path="res://assets/orange_planet_frames/orange_planet_frame0000.png" id="11_y4klb"]
+[ext_resource type="Texture2D" uid="uid://b2863nxdfu6ej" path="res://assets/orange_planet_frames/orange_planet_frame0001.png" id="12_2euxx"]
+[ext_resource type="Texture2D" uid="uid://bmiqgkqv6qv45" path="res://assets/orange_planet_frames/orange_planet_frame0002.png" id="13_7cm1p"]
+[ext_resource type="Texture2D" uid="uid://d2w8tbuix06jx" path="res://assets/orange_planet_frames/orange_planet_frame0003.png" id="14_3xckc"]
+[ext_resource type="Texture2D" uid="uid://br0b3fqb7b4v5" path="res://assets/orange_planet_frames/orange_planet_frame0004.png" id="15_f6uwi"]
+[ext_resource type="Texture2D" uid="uid://b5ya32qlvrwmo" path="res://assets/orange_planet_frames/orange_planet_frame0005.png" id="16_v702j"]
+[ext_resource type="Texture2D" uid="uid://b7fdii3ek7vyf" path="res://assets/orange_planet_frames/orange_planet_frame0006.png" id="17_hio3u"]
+[ext_resource type="Texture2D" uid="uid://b8eerk4g2c7c8" path="res://assets/orange_planet_frames/orange_planet_frame0007.png" id="18_mabck"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ao57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3whfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f78wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u1ow0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ave48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_28fyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7roua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_30v16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x0vln")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rn55q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_y4klb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2euxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7cm1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3xckc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_f6uwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v702j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hio3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mabck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_li7gw")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_xfhsh")
+
+[node name="BluePlanetAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(195, 444)
+sprite_frames = SubResource("SpriteFrames_5ao57")
+animation = &"idle"
+frame = 3
+frame_progress = 0.456783
+
+[node name="OrangePlanetAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(977, 165)
+sprite_frames = SubResource("SpriteFrames_rn55q")
+frame = 7
+frame_progress = 0.97513
