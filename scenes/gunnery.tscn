@@ -15,16 +15,16 @@ gravity_scale = 0.0
 lock_rotation = true
 
 [node name="BottomLeftWall" type="CollisionPolygon2D" parent="Body"]
-polygon = PackedVector2Array(-90, 15, -87, 15, -87, 87, -15, 87, -15, 90, -90, 90)
+polygon = PackedVector2Array(-90, 15, -86, 15, -86, 86, -15, 86, -15, 90, -90, 90)
 
 [node name="BottomRightWall" type="CollisionPolygon2D" parent="Body"]
-polygon = PackedVector2Array(15, 90, 15, 87, 87, 87, 87, 15, 90, 15, 90, 90)
+polygon = PackedVector2Array(15, 90, 15, 86, 86, 86, 86, 15, 90, 15, 90, 90)
 
 [node name="TopLeftWall" type="CollisionPolygon2D" parent="Body"]
-polygon = PackedVector2Array(-90, -15, -87, -15, -87, -47, 23, -47, 23, -54, -87, -54, -87, -87, -15, -87, -15, -90, -90, -90)
+polygon = PackedVector2Array(-90, -15, -86, -15, -86, -47, 23, -47, 23, -54, -86, -54, -86, -86, -15, -86, -15, -90, -90, -90)
 
 [node name="TopRightWall" type="CollisionPolygon2D" parent="Body"]
-polygon = PackedVector2Array(15, -90, 15, -87, 87, -87, 87, -15, 90, -15, 90, -90)
+polygon = PackedVector2Array(15, -90, 15, -86, 86, -86, 86, -15, 90, -15, 90, -90)
 
 [node name="Platform1" type="CollisionPolygon2D" parent="Body"]
 polygon = PackedVector2Array(2, -1, 51, -1, 51, -11, 2, -11)

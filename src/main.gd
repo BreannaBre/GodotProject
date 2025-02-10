@@ -1,5 +1,6 @@
 extends Node2D
 
+const KERNEL_SCENE := preload("res://scenes/kernel.tscn")
 const GUNNERY_SCENE := preload("res://scenes/gunnery.tscn")
 var rooms: Array[Room] = []
 const ANGRY_FACE_SCENE := preload("res://scenes/angry_face.tscn")
@@ -7,14 +8,15 @@ var enemies: Array[Enemy] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_room(GUNNERY_SCENE, Vector2(300,300)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300+181,300)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300+181,300+181)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300,300+181)).set_sleep(false)
+	add_room(KERNEL_SCENE, Vector2(300,300)).set_sleep(false)
+	add_room(GUNNERY_SCENE, Vector2(300-181,300-181)).set_sleep(false)
 	add_room(GUNNERY_SCENE, Vector2(300,300-181)).set_sleep(false)
-	var new_enemy := add_enemy(ANGRY_FACE_SCENE, Vector2(800, 400))
-	new_enemy.set_target(Vector2(300,300))
-	new_enemy.set_sleep(false)
+	add_room(GUNNERY_SCENE, Vector2(300+181,300)).set_sleep(false)
+	add_room(GUNNERY_SCENE, Vector2(300,300+181)).set_sleep(false)
+	add_room(GUNNERY_SCENE, Vector2(300-181,300+181)).set_sleep(false)
+	#var new_enemy := add_enemy(ANGRY_FACE_SCENE, Vector2(800, 400))
+	#new_enemy.set_target(Vector2(300,300))
+	#new_enemy.set_sleep(false)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
