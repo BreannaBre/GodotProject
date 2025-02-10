@@ -11,7 +11,3 @@ script = ExtResource("1_rjrnr")
 position = Vector2(316, 15)
 
 [node name="Node2DRenderSceneBuffersConfiguration" parent="." instance=ExtResource("2_o17ss")]
-position = Vector2(703, 1634)
-
-[node name="RoomsNode" type="Node" parent="."]
-unique_name_in_owner = true

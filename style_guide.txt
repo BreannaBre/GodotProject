@@ -1,11 +1,19 @@
 https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html
 
-For visibility of direct descendants of main.tscn:
+For making sure things render in the proper order:
+	"CanvasItem -> Ordering -> Z as Relative" = off
 	"CanvasItem -> Ordering -> Z Index" should follow the following conventions:
-	(please note that these are effective Z indices)
 		0: background
 		1: ship background
 		2: ship rooms
 		3: enemies
 		4: players
 		5: ship room decorations
+
+For making sure things collide properly:
+	"CollisionObject2D -> Collision -> Layer":
+		The layers are named based on what type of thing it is. You should
+		probably select one.
+	"CollisionObject2D -> Collision -> Mask":
+		These are the same layers, but these values control what you can stop
+		you (but now what can be stopped by you).

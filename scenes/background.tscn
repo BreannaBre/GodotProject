@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bh8k0gx1xne7o" path="res://assets/near_stars.svg" id="3_8laf4"]
 
 [node name="Node2DRenderSceneBuffersConfiguration" type="Node2D"]
+z_as_relative = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

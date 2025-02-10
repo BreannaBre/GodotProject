@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4gquuo3goj66"
-path="res://.godot/imported/gun_room_foreground.png-bbbdf2a1df60b07326b5152e79402cd5.ctex"
+path="res://.godot/imported/gunnery_foreground.png-8a079fd542ab3bdfb0adab7166c58a36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gun_room_foreground.png"
-dest_files=["res://.godot/imported/gun_room_foreground.png-bbbdf2a1df60b07326b5152e79402cd5.ctex"]
+source_file="res://assets/gunnery_foreground.png"
+dest_files=["res://.godot/imported/gunnery_foreground.png-8a079fd542ab3bdfb0adab7166c58a36.ctex"]
 
 [params]
 

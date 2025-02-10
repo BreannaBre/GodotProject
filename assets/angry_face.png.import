@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do5a01jh2p73y"
-path="res://.godot/imported/gun_room_base.png-a67bcce6dc12a8f01c5ba699e15c2abd.ctex"
+uid="uid://btkcvrhgiuvsf"
+path="res://.godot/imported/angry_face.png-77cf1fc97c9d12fea5bedba9d9165914.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gun_room_base.png"
-dest_files=["res://.godot/imported/gun_room_base.png-a67bcce6dc12a8f01c5ba699e15c2abd.ctex"]
+source_file="res://assets/angry_face.png"
+dest_files=["res://.godot/imported/angry_face.png-77cf1fc97c9d12fea5bedba9d9165914.ctex"]
 
 [params]
 

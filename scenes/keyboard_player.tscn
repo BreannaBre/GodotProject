@@ -9,6 +9,9 @@ height = 18.0
 
 [node name="KeyboardPlayer" type="CharacterBody2D"]
 z_index = 4
+z_as_relative = false
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_vrr3s")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
