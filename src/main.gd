@@ -1,19 +1,30 @@
 extends Node2D
 
+var tubes: Array[RID] = []
+
 const KERNEL_SCENE := preload("res://scenes/kernel.tscn")
 const GUNNERY_SCENE := preload("res://scenes/gunnery.tscn")
 var rooms: Array[Room] = []
+
 const ANGRY_FACE_SCENE := preload("res://scenes/angry_face.tscn")
 var enemies: Array[Enemy] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_room(KERNEL_SCENE, Vector2(300,300)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300-181,300-181)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300,300-181)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300+181,300)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300,300+181)).set_sleep(false)
-	add_room(GUNNERY_SCENE, Vector2(300-181,300+181)).set_sleep(false)
+	#add_room(KERNEL_SCENE, Vector2(300,300))
+	#add_room(GUNNERY_SCENE, Vector2(300-180,300-180))
+	#add_room(GUNNERY_SCENE, Vector2(300,300-180))
+	#add_room(GUNNERY_SCENE, Vector2(300+180,300))
+	#add_room(GUNNERY_SCENE, Vector2(300,300+180))
+	#add_room(GUNNERY_SCENE, Vector2(300-180,300+180))
+
+
+	var room1 := add_room(GUNNERY_SCENE, Vector2(300,300))
+	var room2 := add_room(GUNNERY_SCENE, Vector2(300+500,300))
+	add_tube(room1, room2)
+
+	for room: Room in rooms:
+		room.set_sleep(false)
 	#var new_enemy := add_enemy(ANGRY_FACE_SCENE, Vector2(800, 400))
 	#new_enemy.set_target(Vector2(300,300))
 	#new_enemy.set_sleep(false)
@@ -45,4 +56,9 @@ func add_enemy(enemy: PackedScene, coords: Vector2) -> Enemy:
 	new_enemy.set_pos(coords)
 	enemies.append(new_enemy)
 	return new_enemy
-	
+
+func add_tube(A: Room, B: Room) -> RID:
+	var joint := PhysicsServer2D.joint_create()
+	PhysicsServer2D.joint_make_damped_spring(joint, A.body.global_position, B.body.global_position, A.body, B.body) 
+	tubes.append(joint)
+	return joint

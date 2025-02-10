@@ -2,7 +2,6 @@ class_name Gunnery
 extends Room
 
 var gun_picture: Sprite2D
-var body: RigidBody2D
 const GUN_SCALE := Vector2(0.6, 0.6)
 
 func _ready() -> void:
@@ -18,6 +17,3 @@ func _process(_delta: float) -> void:
 		return
 	var new_rotation := body.transform.origin.angle_to_point(target)
 	gun_picture.transform = Transform2D(new_rotation, GUN_SCALE, 0, Vector2(0,0))
-
-func set_pos(new_pos: Vector2) -> void:
-	body.transform.origin = new_pos
