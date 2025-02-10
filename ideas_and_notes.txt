@@ -8,5 +8,3 @@ Players
 	looking to further more keyboard/controllers
 	
 	Mouse player does external tasks, keyboard players do internal tasks
-
-Breanna - Working on ship mechanics (kinda a blueprint)
