@@ -1,12 +1,14 @@
 extends Node2D
 
+var blue_planet: AnimatedSprite2D
+var orange_planet: AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$BluePlanetAnimation.play()
-	$OrangePlanetAnimation.play()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var blue_planet_unsafe := get_node("BluePlanetAnimation")
+	assert(blue_planet_unsafe is AnimatedSprite2D, "Somebody's been mucking with the titlescreen nodes")
+	blue_planet = blue_planet_unsafe as AnimatedSprite2D
+	blue_planet.play()
+	var orange_planet_unsafe := get_node("OrangePlanetAnimation")
+	assert(orange_planet_unsafe is AnimatedSprite2D, "Somebody's been mucking with the titlescreen nodes")
+	orange_planet = orange_planet_unsafe as AnimatedSprite2D
+	orange_planet.play()
