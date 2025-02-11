@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://rj3h28pvb2lv"]
+[gd_scene load_steps=6 format=3 uid="uid://rj3h28pvb2lv"]
 
+[ext_resource type="Texture2D" uid="uid://d4ju1qsyd837s" path="res://assets/blue_planet_frames/blue_planet_frame0000.png" id="1_fm0vg"]
 [ext_resource type="Script" path="res://src/parallax_movement.gd" id="2_85fmn"]
 [ext_resource type="Texture2D" uid="uid://br032qeqaihy7" path="res://assets/far_stars.svg" id="2_svi8x"]
+[ext_resource type="Texture2D" uid="uid://c0c467d8c1ti4" path="res://assets/orange_planet_frames/orange_planet_frame0000.png" id="2_yqn2y"]
 [ext_resource type="Texture2D" uid="uid://bh8k0gx1xne7o" path="res://assets/near_stars.svg" id="3_8laf4"]
 
 [node name="Node2DRenderSceneBuffersConfiguration" type="Node2D"]
@@ -9,19 +11,16 @@ z_as_relative = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(3000, 0)
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1632.0
-offset_top = -1224.0
-offset_right = 1632.0
-offset_bottom = 1224.0
+offset_left = -2208.0
+offset_top = -1548.0
+offset_right = 1056.0
+offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -41,3 +40,16 @@ speed = -100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("3_8laf4")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(10000, 0)
+script = ExtResource("2_85fmn")
+speed = -150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(7543, 518)
+texture = ExtResource("1_fm0vg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3833, 130)
+texture = ExtResource("2_yqn2y")
