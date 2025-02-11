@@ -17,3 +17,7 @@ For making sure things collide properly:
 	"CollisionObject2D -> Collision -> Mask":
 		These are the same layers, but these values control what you can stop
 		you (but now what can be stopped by you).
+
+Room Defaults:
+	"RigidBody2D -> Physics Material" = room_physics_material.tres
+	Everything else should be handled by Room.defaults()
