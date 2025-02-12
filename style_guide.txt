@@ -17,6 +17,9 @@ For making sure things collide properly:
 	"CollisionObject2D -> Collision -> Mask":
 		These are the same layers, but these values control what you can stop
 		you (but now what can be stopped by you).
+	Additionally, all rooms should have an Area2D that bounds it. It should be
+	an immediate child of the main body. It should be on the "Room" layer and
+	have no mask. This is so that the mouse can click it.
 
 Room Defaults:
 	"RigidBody2D -> Physics Material" = room_physics_material.tres
