@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://xc2fnvckljx5"]
+
+[ext_resource type="Script" path="res://src/core.gd" id="1_h7k5b"]
+[ext_resource type="PhysicsMaterial" uid="uid://bi3h5q7jaitql" path="res://resources/room_physics_material.tres" id="2_6jray"]
+[ext_resource type="Texture2D" uid="uid://djgjcuaahhrfm" path="res://assets/rooms/heart_ship_core.svg" id="3_5c7o7"]
+[ext_resource type="Texture2D" uid="uid://bxg5cmsk2tm2h" path="res://assets/rooms/heart_ship_bg.svg" id="4_3jbhk"]
+
+[node name="Core" type="Node2D"]
+script = ExtResource("1_h7k5b")
+
+[node name="Body" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
+physics_material_override = ExtResource("2_6jray")
+linear_damp = 10.0
+
+[node name="BottomRightWall" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(90, 28, 86, 28, 86, 86, 13, 86, 13, 90, 90, 90)
+
+[node name="Base" type="Sprite2D" parent="Body"]
+z_index = 2
+z_as_relative = false
+scale = Vector2(0.247, 0.247)
+texture = ExtResource("3_5c7o7")
+
+[node name="BottomLeftWall" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(-18, 90, -90, 90, -90, 16, -86, 16, -86, 86, -18, 86)
+
+[node name="MiddlePlatform" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(-31, 58, 26, 58, 26, 62, -31, 62)
+one_way_collision = true
+
+[node name="LeftPlatform" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(-35, 18, -90, 18, -90, 15, -35, 15)
+one_way_collision = true
+
+[node name="RightPlatform" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(31, 30, 31, 30, 31, 26, 90, 26, 90, 30)
+one_way_collision = true
+
+[node name="TopWall" type="CollisionPolygon2D" parent="Body"]
+polygon = PackedVector2Array(-90, -33, -90, -90, 90, -90, 90, -15, 86, -15, 86, -86, -86, -86, -86, -33)
+
+[node name="HeartShipBg" type="Sprite2D" parent="Body"]
+position = Vector2(0, -4.835)
+scale = Vector2(0.247, 0.247)
+texture = ExtResource("4_3jbhk")

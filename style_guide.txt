@@ -21,3 +21,7 @@ For making sure things collide properly:
 Room Defaults:
 	"RigidBody2D -> Physics Material" = room_physics_material.tres
 	Everything else should be handled by Room.defaults()
+
+For importing svg's:
+	under import settings, they should be at 4x scale.
+	In game, they should be scaled down to 0.247

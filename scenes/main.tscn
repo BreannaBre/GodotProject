@@ -8,6 +8,6 @@
 script = ExtResource("1_rjrnr")
 
 [node name="KeyboardPlayer" parent="." instance=ExtResource("1_m6610")]
-position = Vector2(316, 15)
+position = Vector2(584.12, 299.025)
 
 [node name="Node2DRenderSceneBuffersConfiguration" parent="." instance=ExtResource("2_o17ss")]

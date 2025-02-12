@@ -4,12 +4,15 @@ extends Node2D
 const TUBE_LENGTH: float = 380
 var tubes: Array[RID] = []
 
-const KERNEL_SCENE := preload("res://scenes/kernel.tscn")
-const GUNNERY_SCENE := preload("res://scenes/gunnery.tscn")
+const GUNNERY_LEFT_SCENE := preload("res://scenes/gunnery_left.tscn")
+const GUNNERY_RIGHT_SCENE := preload("res://scenes/gunnery_right.tscn")
+const CORE_SCENE := preload("res://scenes/core.tscn")
+const THRUSTER_SCENE := preload("res://scenes/thruster.tscn")
+const SHIELD_LEFT_SCENE := preload("res://scenes/shield_left.tscn")
+const SHIELD_RIGHT_SCENE := preload("res://scenes/shield_right.tscn")
+const PENTAGON_SCENE := preload("res://scenes/pentagon.tscn")
 var rooms: Array[Room] = []
 var core_coords: Vector2
-var shaken_room: Room
-var next_shake: int = 0
 
 const ANGRY_FACE_SCENE := preload("res://scenes/angry_face.tscn")
 var enemies: Array[Enemy] = []
@@ -18,14 +21,14 @@ var enemies: Array[Enemy] = []
 func _ready() -> void:
 	core_coords = get_viewport_rect().size / 2
 
-	var mid := add_room(GUNNERY_SCENE, core_coords)
-	var left := add_room(GUNNERY_SCENE, core_coords + Vector2(-200,0))
-	var top_left := add_room(GUNNERY_SCENE, core_coords + Vector2(-200,-200))
-	var top := add_room(GUNNERY_SCENE, core_coords + Vector2(0,-200))
-	var top_right := add_room(GUNNERY_SCENE, core_coords + Vector2(200,-200))
-	var right := add_room(GUNNERY_SCENE, core_coords + Vector2(200,0))
-	var bottom := add_room(GUNNERY_SCENE, core_coords + Vector2(0,200))
-	shaken_room = bottom
+	var mid := add_room(CORE_SCENE, core_coords)
+	var left := add_room(SHIELD_LEFT_SCENE, core_coords + Vector2(-200,0))
+	var top_left := add_room(GUNNERY_LEFT_SCENE, core_coords + Vector2(-200,-200))
+	var top := add_room(PENTAGON_SCENE, core_coords + Vector2(0,-200))
+	var top_right := add_room(GUNNERY_RIGHT_SCENE, core_coords + Vector2(200,-200))
+	var right := add_room(SHIELD_RIGHT_SCENE, core_coords + Vector2(200,0))
+	var bottom := add_room(THRUSTER_SCENE, core_coords + Vector2(0,200))
+	bottom.set_target(core_coords + Vector2(0,180))
 
 	add_tube(mid, left, Vector2(-TUBE_LENGTH,0), Vector2())
 	add_tube(mid, right, Vector2(TUBE_LENGTH,0), Vector2())
@@ -41,25 +44,20 @@ func _ready() -> void:
 	#new_enemy.set_target(core_coords)
 	#new_enemy.set_sleep(false)
 
-func _physics_process(delta: float) -> void:
-	var impulse := core_coords + Vector2(0,180) - shaken_room.body.global_position
-	impulse *= delta * 100
-	var cur := Time.get_ticks_msec()
-	if cur > next_shake:
-		next_shake = cur + 200
-		impulse.x += randf_range(-50, 50)
-		impulse.y += randf_range(-50, 50)
-	shaken_room.body.apply_impulse(impulse)
+func _physics_process(_delta: float) -> void:
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var click_event := event as InputEventMouseButton
 		for room in rooms:
-			room.fire(click_event.position)
+			if not room is Thruster:
+				room.fire(click_event.position)
 	elif event is InputEventMouseMotion:
 		var motion_event := event as InputEventMouseMotion
 		for room in rooms:
-			room.set_target(motion_event.position)
+			if not room is Thruster:
+				room.set_target(motion_event.position)
 
 func add_room(room: PackedScene, coords: Vector2) -> Room:
 	var new_node := room.instantiate()

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="145.9969655468085"
+   height="148.3582744057603"
+   version="1.1"
+   id="svg238"
+   sodipodi:docname="heart_ship_tl.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs242" />
+  <sodipodi:namedview
+     id="namedview240"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.9416561"
+     inkscape:cx="41.353176"
+     inkscape:cy="82.579502"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg238" />
+  <path
+     style="fill:#ff3347;fill-opacity:1;stroke:none;stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round"
+     d="M 143.941,146.358 H 31.514 L 143.941,22.114 Z"
+     id="path3576"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="line230"
+     style="fill:#ff3347;fill-opacity:1;stroke:#030303;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"
+     d="M 143.941,66.966965 V 7.263 L 141.77101,6.4969478 135.25296,5.0933933 128.68303,3.9499125 122.0805,3.0676694 115.46468,2.4478273 108.85487,2.0915499 102.27036,2 95.730446,2.1743417 89.254417,2.6157379 82.86158,3.3253527 76.571213,4.3043489 70.402634,5.5538902 64.375122,7.0751405 58.507973,8.8692627 52.820492,10.93742 l -5.488526,2.343357 -5.270271,2.619719 -5.032722,2.897245 -4.775875,3.175934 -4.499739,3.455787 -4.204302,3.736803 -3.88957,4.018984 -3.555544,4.302327 -3.202223,4.58683 -2.829604,4.872505 -2.4376923,5.159336 -2.026483,5.447334 L 4.011961,63.290073 2.8657806,69.316895 2.1886952,75.635193 2,82.246155 l 0.3189905,6.90477 0.8459716,7.199745 1.3922483,7.49589 1.9578205,7.7932 2.5426883,8.09165 3.1468508,8.3913 3.770309,8.69208 4.806121,9.54321 h 44.188"
+     sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccc" />
+  <path
+     id="line236"
+     style="fill:none;stroke:#030303;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"
+     d="M 104.11899,146.35828 H 143.969 l -0.0282,-48.886577"
+     sodipodi:nodetypes="ccc" />
+</svg>

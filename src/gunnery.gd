@@ -2,7 +2,7 @@ class_name Gunnery
 extends Room
 
 var gun_picture: Sprite2D
-const GUN_SCALE := Vector2(0.6, 0.6)
+const GUN_SCALE := Vector2(0.304, 0.304)
 
 func _ready() -> void:
 	var gun_picture_unsafe := get_node("%GunPicture")

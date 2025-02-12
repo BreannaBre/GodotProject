@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="127.25286503354073"
+   height="181.22184297542572"
+   version="1.1"
+   id="svg158"
+   sodipodi:docname="heart_ship_left.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs162" />
+  <sodipodi:namedview
+     id="namedview160"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.5634674"
+     inkscape:cx="61.575985"
+     inkscape:cy="66.068183"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg158" />
+  <path
+     style="fill:#ff3347;fill-opacity:1;stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round"
+     d="M 1.2600068,2 H 125.253 v 176.8114 z"
+     id="path464"
+     sodipodi:nodetypes="cccc" />
+  <line
+     x1="80.637527"
+     y1="55.125034"
+     x2="37.277298"
+     y2="55.125034"
+     stroke="#030303"
+     stroke-linecap="round"
+     stroke-width="4"
+     id="line142" />
+  <path
+     id="line152"
+     style="fill:none;stroke:#030303;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"
+     d="M 85.374893,2 H 125.253 l -1.3e-4,55.486511"
+     sodipodi:nodetypes="ccc" />
+  <path
+     id="line156"
+     style="fill:none;stroke:#030303;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"
+     d="m 73.151131,107.16142 h 52.101809 l -7e-5,72.06043 h -1.66099 L 22.486065,35.324448 18.988747,30.25609 12.531648,20.349188 6.7751894,10.747734 2,2 h 44.253"
+     sodipodi:nodetypes="cccccccccc" />
+</svg>

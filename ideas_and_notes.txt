@@ -6,5 +6,9 @@ Ship
 Players
 	1 mouse 1 keyboard/controller minimum
 	looking to further more keyboard/controllers
-	
+
 	Mouse player does external tasks, keyboard players do internal tasks
+
+TODO:
+	fix this....
+	ERROR: 6 RID allocations of type 'P12GodotJoint2D' were leaked at exit.
