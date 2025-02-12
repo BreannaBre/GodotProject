@@ -26,7 +26,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(3000, 0)
+motion_mirroring = Vector2(0, 1500)
 script = ExtResource("2_85fmn")
 speed = -75.0
 
@@ -34,7 +34,7 @@ speed = -75.0
 texture = ExtResource("2_svi8x")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(3000, 0)
+motion_mirroring = Vector2(0, 1500)
 script = ExtResource("2_85fmn")
 speed = -100.0
 
@@ -42,14 +42,14 @@ speed = -100.0
 texture = ExtResource("3_8laf4")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(10000, 0)
+motion_mirroring = Vector2(0, 5000)
 script = ExtResource("2_85fmn")
 speed = -150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(7543, 518)
+position = Vector2(836, -1211)
 texture = ExtResource("1_fm0vg")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(3833, 130)
+position = Vector2(375, -3158)
 texture = ExtResource("2_yqn2y")
