@@ -32,7 +32,7 @@ func defaults() -> void:
 	body.lock_rotation = true
 	body.linear_damp = 1
 	body.collision_layer = 0b1000
-	body.collision_mask  = 0b1100
+	body.collision_mask  = 0b1110
 
 func shake() -> void:
 	var cur := Time.get_ticks_msec()
