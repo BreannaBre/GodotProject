@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqr2ova5jxyuf"]
+
+[ext_resource type="Texture2D" uid="uid://djiiknuwh4t66" path="res://assets/background_starry.png" id="1_q2qka"]
+[ext_resource type="Texture2D" uid="uid://drsf71xa1icuq" path="res://assets/rooms/heart_ship_left.svg" id="2_1ajhf"]
+[ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="3_0uxya"]
+[ext_resource type="Texture2D" uid="uid://bxg5cmsk2tm2h" path="res://assets/rooms/heart_ship_bg.svg" id="4_2seg0"]
+[ext_resource type="Texture2D" uid="uid://dg78g2bo78amu" path="res://assets/fishcat.png" id="5_x1uov"]
+[ext_resource type="Script" path="res://scenes/score.gd" id="5_xkdsx"]
+
+[node name="GameOverScreen" type="Node2D"]
+z_index = 6
+z_as_relative = false
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_q2qka")
+
+[node name="BrokenShipSprite" type="Sprite2D" parent="Background"]
+position = Vector2(-439, -62)
+rotation = -0.672096
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1ajhf")
+
+[node name="BrokenOffShieldSprite" type="Sprite2D" parent="Background"]
+position = Vector2(360, 240)
+rotation = 0.993691
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_0uxya")
+
+[node name="FadedHeartSprite" type="Sprite2D" parent="Background"]
+position = Vector2(365, -215)
+rotation = -0.288586
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_2seg0")
+
+[node name="CatfishSprite" type="Sprite2D" parent="Background"]
+position = Vector2(-165, 196)
+rotation = -5.9493
+scale = Vector2(-0.1, -0.1)
+texture = ExtResource("5_x1uov")
+
+[node name="GameOverLabel" type="Label" parent="."]
+offset_left = 272.0
+offset_top = 144.0
+offset_right = 880.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 90
+text = "Heart Broken!"
+
+[node name="FinalScore" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 304.0
+offset_right = 918.0
+offset_bottom = 414.0
+theme_override_font_sizes/font_size = 80
+text = "Time Survived: 80"
+script = ExtResource("5_xkdsx")

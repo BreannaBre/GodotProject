@@ -3,11 +3,17 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -350.0
 
+var sprite: Sprite2D
+
 var weld_picker_params := PhysicsPointQueryParameters2D.new()
 var button_picker_params := PhysicsPointQueryParameters2D.new()
 var current_welded: Room
 
 func _ready() -> void:
+	var sprite_node := get_node("%Fishcat")
+	assert(sprite_node is Sprite2D, "Player sprite was not Sprite2D")
+	sprite = sprite_node as Sprite2D
+
 	# we only want to collide with the room areas
 	weld_picker_params.collide_with_areas = true
 	weld_picker_params.collide_with_bodies = false
@@ -30,8 +36,10 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	#direction based on input
 	if Input.is_action_pressed("Player1Left"):
+		sprite.flip_h = true
 		velocity.x -= 1
 	if Input.is_action_pressed("Player1Right"):
+		sprite.flip_h = false
 		velocity.x += 1
 	velocity.x = velocity.x*SPEED
 

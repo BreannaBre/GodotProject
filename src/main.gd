@@ -15,11 +15,18 @@ var mouse_body: StaticBody2D
 var mouse_dragging := false
 var mouse_params := PhysicsPointQueryParameters2D.new()
 
-const ANGRY_FACE_SCENE := preload("res://scenes/angry_face.tscn")
+const ANGRY_FACE_SCENE := preload("res://scenes/love_bomb.tscn")
 var enemies: Array[Enemy] = []
+var windowSize := DisplayServer.screen_get_size()
+const SPAWN_DELTA := 0.25
+const INIT_DELAY := 3.0
+var spawn_delay: float
+var spawn_tick_acc: float
 
 func _ready() -> void:
-	print("main ready")
+	spawn_delay = INIT_DELAY
+	spawn_tick_acc=0
+
 	core_coords = get_viewport_rect().size / 2
 	var body_unsafe := get_node("%MouseBody")
 	assert(body_unsafe is StaticBody2D, "Somebody's been mucking with the mouse nodes")
@@ -52,6 +59,9 @@ func _ready() -> void:
 		if room is Core:
 			continue
 		room.pop_on()
+
+func _process(delta: float) -> void:
+	spawn_tick(delta)
 
 func _physics_process(_delta: float) -> void:
 	pass
@@ -98,7 +108,19 @@ func add_room(room: PackedScene, coords: Vector2) -> Room:
 	add_child(new_room)
 	new_room.set_pos(coords)
 	rooms.append(new_room)
+	# TODO: maybe move this?
+	new_room.body.add_to_group("room_bodies")
 	return new_room
+
+func spawn_tick(delta: float) -> void:
+	spawn_tick_acc += delta
+	if (spawn_tick_acc > spawn_delay):
+		spawn_tick_acc = 0
+		spawn_delay = maxf(spawn_delay - SPAWN_DELTA, SPAWN_DELTA)
+		var location := windowSize.x/2 * Vector2.from_angle(randf_range(-PI, 0))
+		var new_enemy := add_enemy(ANGRY_FACE_SCENE, location + core_coords)
+		new_enemy.set_target(core_coords)
+		new_enemy.set_sleep(false)
 
 func add_enemy(enemy: PackedScene, coords: Vector2) -> Enemy:
 	var new_node := enemy.instantiate()

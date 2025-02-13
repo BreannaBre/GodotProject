@@ -84,21 +84,39 @@ animations = [{
 }]
 
 [node name="TitleScreen" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_li7gw")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("1_xfhsh")
 
-[node name="BluePlanetAnimation" type="AnimatedSprite2D" parent="."]
-position = Vector2(195, 444)
+[node name="BluePlanetAnimation" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(-381, 120)
 sprite_frames = SubResource("SpriteFrames_5ao57")
 animation = &"idle"
 frame = 3
 frame_progress = 0.456783
 
-[node name="OrangePlanetAnimation" type="AnimatedSprite2D" parent="."]
-position = Vector2(977, 165)
+[node name="OrangePlanetAnimation" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(401, -159)
 sprite_frames = SubResource("SpriteFrames_rn55q")
 frame = 7
 frame_progress = 0.97513
+
+[node name="StartButton" type="Button" parent="."]
+z_index = 6
+anchors_preset = -1
+offset_left = 480.0
+offset_top = 320.0
+offset_right = 699.0
+offset_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.877908, 0.889999)
+theme_override_colors/icon_hover_color = Color(0.266575, 0.266575, 0.266575, 1)
+theme_override_font_sizes/font_size = 70
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
