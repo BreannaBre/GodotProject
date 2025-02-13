@@ -1,11 +1,11 @@
 class_name Room
 extends Node2D
 
-enum {ATTACHED, DETACHED, REATTACHING, REPAIRING}
+enum ROOM_STATE {ATTACHED, DETACHED, REATTACHING, REPAIRING}
 
 const REATTACH_TIME: float = 6
 var target := Vector2(0,0)
-var state := DETACHED
+var state := ROOM_STATE.DETACHED
 var body: RigidBody2D
 var next_shake: int = 0
 var breakaway: float = 0
@@ -30,14 +30,14 @@ func default_ready() -> void:
 		repair_sign.hide()
 
 func default_process(delta: float) -> void:
-	if state == REATTACHING:
+	if state == ROOM_STATE.REATTACHING:
 		reattach_work -= delta * welders.size()
 		repair_sign.show()
 		if reattach_work <= 0:
 			repair_sign.hide()
 			breakaway = 0
-			set_state(REPAIRING)
-	elif state == REPAIRING:
+			set_state(ROOM_STATE.REPAIRING)
+	elif state == ROOM_STATE.REPAIRING:
 		breakaway -= delta * welders.size() * 20
 		if breakaway < 0:
 			breakaway = 0
@@ -49,24 +49,24 @@ func default_process(delta: float) -> void:
 	modulate = breakaway_visual
 
 func default_physics_process(_delta: float) -> void:
-	if state == ATTACHED:
+	if state == ROOM_STATE.ATTACHED:
 		shake()
 		if breakaway > 70:
-			set_state(DETACHED)
+			set_state(ROOM_STATE.DETACHED)
 			pop_off(true)
 
 func set_target(new_target: Vector2) -> void:
 	target = new_target
 
-func set_state(new_state: int) -> void:
+func set_state(new_state: ROOM_STATE) -> void:
 	state = new_state
-	if state == DETACHED:
+	if state == ROOM_STATE.DETACHED:
 		body.gravity_scale = 1
-	elif state == ATTACHED:
+	elif state == ROOM_STATE.ATTACHED:
 		body.gravity_scale = 0
-	elif state == REATTACHING:
+	elif state == ROOM_STATE.REATTACHING:
 		body.gravity_scale = 0
-	elif state == REPAIRING:
+	elif state == ROOM_STATE.REPAIRING:
 		body.gravity_scale = 0
 
 func set_pos(new_pos: Vector2) -> void:
@@ -106,19 +106,19 @@ func shake() -> void:
 
 func start_welding(weldee: RID) -> void:
 	welders.append(weldee)
-	if state == ATTACHED:
-		set_state(REPAIRING)
-	elif state == DETACHED:
-		set_state(REATTACHING)
+	if state == ROOM_STATE.ATTACHED:
+		set_state(ROOM_STATE.REPAIRING)
+	elif state == ROOM_STATE.DETACHED:
+		set_state(ROOM_STATE.REATTACHING)
 		pop_on()
 
 func stop_welding(weldee: RID) -> void:
 	welders.erase(weldee)
 	if welders.size() == 0:
-		if state == REPAIRING:
-			set_state(ATTACHED)
-		elif state == REATTACHING:
-			set_state(DETACHED)
+		if state == ROOM_STATE.REPAIRING:
+			set_state(ROOM_STATE.ATTACHED)
+		elif state == ROOM_STATE.REATTACHING:
+			set_state(ROOM_STATE.DETACHED)
 			reattach_work = REATTACH_TIME
 			pop_off(false)
 

@@ -51,7 +51,7 @@ func _ready() -> void:
 		room.set_host(core.body)
 
 	for room in rooms:
-		room.set_state(room.ATTACHED)
+		room.set_state(room.ROOM_STATE.ATTACHED)
 
 	# I hate joints. I hate joints. I hate joints. I hate joints. I hate joints.
 	await get_tree().physics_frame
