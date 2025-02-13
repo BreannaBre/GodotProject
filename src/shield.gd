@@ -3,6 +3,8 @@ extends Room
 
 @export var force: float = 4
 const DIST: float = 230
+const POWERED_BUTTON := preload("res://assets/misc/shield_ready.svg")
+const UNPOWERED_BUTTON := preload("res://assets/misc/shield_charging.svg")
 var button_sprite: Sprite2D
 
 func _ready() -> void:
@@ -19,7 +21,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	default_process(delta)
-
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)
@@ -39,7 +40,11 @@ func _physics_process(delta: float) -> void:
 
 func set_powered(new_powered: bool) -> void:
 	powered = new_powered
-	# TODO: change button picture
+	if powered:
+		button_sprite.texture = POWERED_BUTTON
+	else:
+		button_sprite.texture = UNPOWERED_BUTTON
 
-func press_button(_pressed: Area2D) -> void:
-	set_powered(not powered)
+func press_button(_button: Area2D) -> void:
+	if state == ROOM_STATE.ATTACHED or state == ROOM_STATE.REPAIRING:
+		set_powered(not powered)

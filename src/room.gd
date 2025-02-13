@@ -60,6 +60,7 @@ func set_state(new_state: ROOM_STATE) -> void:
 	state = new_state
 	if state == ROOM_STATE.DETACHED:
 		body.gravity_scale = 1
+		set_powered(false)
 		if repair_sign != null:
 			repair_sign.hide()
 	elif state == ROOM_STATE.ATTACHED:
@@ -68,6 +69,7 @@ func set_state(new_state: ROOM_STATE) -> void:
 			repair_sign.hide()
 	elif state == ROOM_STATE.REATTACHING:
 		body.gravity_scale = 0
+		set_powered(false)
 		if repair_sign != null:
 			repair_sign.show()
 	elif state == ROOM_STATE.REPAIRING:
