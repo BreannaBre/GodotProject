@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp4bxbuy3jetc"]
+[gd_scene load_steps=7 format=3 uid="uid://dp4bxbuy3jetc"]
 
 [ext_resource type="PackedScene" uid="uid://ba73xxekccsg" path="res://scenes/keyboard_player.tscn" id="1_m6610"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_rjrnr"]
 [ext_resource type="PackedScene" uid="uid://rj3h28pvb2lv" path="res://scenes/background.tscn" id="2_o17ss"]
 [ext_resource type="Script" path="res://src/score.gd" id="4_by4x4"]
+[ext_resource type="PackedScene" uid="uid://dw1hldrb7563r" path="res://scenes/title_screen.tscn" id="5_s888o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wefyx"]
 size = Vector2(1, 1)
@@ -31,3 +32,6 @@ offset_top = 28.0
 offset_right = 1016.0
 offset_bottom = 51.0
 script = ExtResource("4_by4x4")
+
+[node name="TitleScreen" parent="." instance=ExtResource("5_s888o")]
+z_index = 7

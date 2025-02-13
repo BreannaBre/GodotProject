@@ -10,6 +10,7 @@ For making sure things render in the proper order:
 		4: enemies
 		5: players
 		6: ship exterior
+		7: UI
 
 For making sure things collide properly:
 	"CollisionObject2D -> Collision -> Layer":
