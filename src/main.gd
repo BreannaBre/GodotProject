@@ -19,6 +19,7 @@ const ANGRY_FACE_SCENE := preload("res://scenes/angry_face.tscn")
 var enemies: Array[Enemy] = []
 
 func _ready() -> void:
+	print("main ready")
 	core_coords = get_viewport_rect().size / 2
 	var body_unsafe := get_node("%MouseBody")
 	assert(body_unsafe is StaticBody2D, "Somebody's been mucking with the mouse nodes")
@@ -37,25 +38,23 @@ func _ready() -> void:
 	var bottom := add_room(THRUSTER_SCENE, core_coords + Vector2(0,181))
 	bottom.set_target(core_coords + Vector2(0,181))
 
-	left.pop_on(mid.body)
-	top_left.pop_on(mid.body)
-	top.pop_on(mid.body)
-	top_right.pop_on(mid.body)
-	right.pop_on(mid.body)
-	bottom.pop_on(mid.body)
+	for room in rooms:
+		if room is Core:
+			continue
+		room.set_host(mid.body)
 
-	#var new_enemy := add_enemy(ANGRY_FACE_SCENE, Vector2(0, 400))
-	#new_enemy.set_target(core_coords)
-	#new_enemy.set_sleep(false)
+	for room in rooms:
+		room.set_state(room.ATTACHED)
+
+	# I hate joints. I hate joints. I hate joints. I hate joints. I hate joints.
+	await get_tree().physics_frame
+	for room in rooms:
+		if room is Core:
+			continue
+		room.pop_on()
 
 func _physics_process(_delta: float) -> void:
-	for room in rooms:
-		if room.breakaway > 70:
-			room.pop_off()
-			var new_vel := room.body.global_position - core_coords
-			new_vel = new_vel.normalized() * 150
-			new_vel += Vector2(0, -30)
-			room.body.linear_velocity = new_vel
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

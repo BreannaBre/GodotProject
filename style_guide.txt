@@ -6,9 +6,10 @@ For making sure things render in the proper order:
 		0: background
 		1: ship background
 		2: ship rooms
-		3: enemies
-		4: players
-		5: ship room decorations
+		3: ship internals
+		4: enemies
+		5: players
+		6: ship exterior
 
 For making sure things collide properly:
 	"CollisionObject2D -> Collision -> Layer":

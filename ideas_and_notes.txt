@@ -10,5 +10,21 @@ Players
 	Mouse player does external tasks, keyboard players do internal tasks
 
 TODO:
-	fix this....
-	ERROR: 6 RID allocations of type 'P12GodotJoint2D' were leaked at exit.
+	fix these:
+		ERROR: 6 RID allocations of type 'P12GodotJoint2D' were leaked at exit.
+		reorder rendering stuff
+
+	for welding:
+		room has a permanent link to the core body
+		there is a second area for buttons
+		in the player class, check input:
+			weld key down:
+				query current location for room
+				cache room
+				send room start_weld(some unique player id)
+			weld key up:
+				send room stop_weld(some unique player id)
+			button key down:
+				query current location for button
+				cache button as area2D
+				send room press_button(button: area2D)
