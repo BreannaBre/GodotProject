@@ -2,13 +2,11 @@ class_name AngryFace
 extends Enemy
 
 var sprite: Sprite2D
-var body: RigidBody2D
 const ACCEL := 50
 const SPEED := 10000
 const TURN := 60
 const EXPLODE_FORCE := 20000
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
 	assert(body_unsafe is RigidBody2D, "Somebody's been mucking with the angry face nodes")
@@ -16,11 +14,9 @@ func _ready() -> void:
 	var sprite_unsafe := get_node("%Sprite")
 	assert(sprite_unsafe is Sprite2D, "Angry face sprite error")
 	sprite = sprite_unsafe as Sprite2D
+	default_ready()
 
 func _physics_process(_delta: float) -> void:
-	if sleep:
-		return
-
 	# I would comment what this code does, but honestly vector math confuses me.
 	# A lot of this was written through guess-and-check lol.
 	var speed := body.linear_velocity.length_squared()
@@ -43,9 +39,6 @@ func _physics_process(_delta: float) -> void:
 		force += heading.rotated(0.5 * PI) * TURN
 
 	body.apply_central_force(force)
-
-func set_pos(new_pos: Vector2) -> void:
-	body.transform.origin = new_pos
 
 func _on_body_entered(_other: Node) -> void:
 	var ship := get_tree().get_nodes_in_group("room_bodies")
