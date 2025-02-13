@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	if state == ATTACHED or state == REPAIRING:
 		var new_rotation := body.transform.origin.angle_to_point(target)
 		gun_picture.transform = Transform2D(new_rotation, GUN_SCALE, 0, Vector2(0,0))
-		
+
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)

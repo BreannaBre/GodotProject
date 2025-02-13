@@ -14,6 +14,7 @@ var welders: Array[RID]
 var host: RigidBody2D
 var reattach_work: float = 0
 var repair_sign: Sprite2D
+var powered := false
 
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
@@ -33,6 +34,7 @@ func default_process(delta: float) -> void:
 		repair_sign.show()
 		if reattach_work <= 0:
 			repair_sign.hide()
+			breakaway = 0
 			set_state(REPAIRING)
 	elif state == REPAIRING:
 		breakaway -= delta * welders.size() * 20
@@ -66,8 +68,10 @@ func set_pos(new_pos: Vector2) -> void:
 func set_host(new_host: RigidBody2D) -> void:
 	host = new_host
 
+func set_powered(_new_powered: bool) -> void:
+	pass
+
 func pop_off(violent: bool) -> void:
-	breakaway = 0
 	reattach_work = REATTACH_TIME
 	PhysicsServer2D.joint_clear(tube)
 	if violent:

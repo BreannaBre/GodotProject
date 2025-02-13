@@ -69,7 +69,7 @@ Player1Interact={
 2d_physics/layer_4="room"
 2d_physics/layer_5="player bullet"
 2d_physics/layer_6="enemy bullet"
-2d_physics/layer_7="shield"
+2d_physics/layer_7="buttons"
 
 [physics]
 

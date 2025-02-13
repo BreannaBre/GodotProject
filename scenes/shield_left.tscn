@@ -41,19 +41,11 @@ polygon = PackedVector2Array(-40, -90, 90, -90, 90, 90, 84, 90)
 
 [node name="ButtonArea" type="Area2D" parent="Body"]
 position = Vector2(58.985, -56.28)
-collision_layer = 8
+collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/ButtonArea"]
 polygon = PackedVector2Array(-17, 12, -25, -26, 25, -26, 17, 12, 0, 28)
-
-[node name="RepairSign" type="Sprite2D" parent="Body/ButtonArea"]
-unique_name_in_owner = true
-z_index = 3
-z_as_relative = false
-position = Vector2(-47.985, -7.72)
-scale = Vector2(0.1825, 0.1825)
-texture = ExtResource("4_flv5q")
 
 [node name="ButtonSprite" type="Sprite2D" parent="Body/ButtonArea"]
 unique_name_in_owner = true
@@ -61,3 +53,11 @@ z_index = 3
 z_as_relative = false
 scale = Vector2(0.247, 0.247)
 texture = ExtResource("4_3e3wl")
+
+[node name="RepairSign" type="Sprite2D" parent="Body"]
+unique_name_in_owner = true
+z_index = 3
+z_as_relative = false
+position = Vector2(11, -64)
+scale = Vector2(0.1825, 0.1825)
+texture = ExtResource("4_flv5q")
