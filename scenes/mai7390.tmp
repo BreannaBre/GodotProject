@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp4bxbuy3jetc"]
+
+[ext_resource type="PackedScene" uid="uid://ba73xxekccsg" path="res://scenes/keyboard_player.tscn" id="1_m6610"]
+[ext_resource type="Script" path="res://src/main.gd" id="1_rjrnr"]
+[ext_resource type="PackedScene" uid="uid://rj3h28pvb2lv" path="res://scenes/background.tscn" id="2_o17ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wefyx"]
+size = Vector2(1, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_rjrnr")
+
+[node name="KeyboardPlayer" parent="." instance=ExtResource("1_m6610")]
+position = Vector2(584.12, 299.025)
+
+[node name="Node2DRenderSceneBuffersConfiguration" parent="." instance=ExtResource("2_o17ss")]
+
+[node name="MouseBody" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBody"]
+shape = SubResource("RectangleShape2D_wefyx")
