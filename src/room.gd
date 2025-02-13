@@ -20,11 +20,11 @@ var breakaway_visual := Color(1,1,1,1)
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
 func default_ready() -> void:
+	add_to_group("rooms")
 	body.lock_rotation = true
 	body.linear_damp = 1
 	body.collision_layer = 0b1000
 	body.collision_mask  = 0b1100
-	body.add_to_group("room_bodies")
 	tube = PhysicsServer2D.joint_create()
 	if repair_sign != null:
 		repair_sign.hide()
@@ -124,3 +124,7 @@ func stop_welding(weldee: RID) -> void:
 
 func press_button(_pressed: Area2D) -> void:
 	pass
+
+#Deal damage by percent of total health
+func damage(percent: float) -> void:
+	breakaway += percent * 70/100

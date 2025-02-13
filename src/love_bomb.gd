@@ -5,7 +5,8 @@ var sprite: Sprite2D
 const ACCEL := 50
 const SPEED := 10000
 const TURN := 60
-const EXPLODE_FORCE := 800000
+const EXPLODE_FORCE := 1
+const DAMAGE_MULT := 0.75
 
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
@@ -41,13 +42,16 @@ func _physics_process(_delta: float) -> void:
 	body.apply_central_force(force)
 
 func _on_body_entered(_other: Node) -> void:
-	var ship := get_tree().get_nodes_in_group("room_bodies")
-	for room_body in ship:
-		assert(room_body is RigidBody2D, "Don't touch the room_bodies group please!")
-		var safe_room := room_body as RigidBody2D
-		var dist := body.global_position.distance_squared_to(safe_room.global_position)
-		var dir := body.global_position.direction_to(safe_room.global_position)
-		var force := EXPLODE_FORCE / maxf(1.0, dist)
-		force = minf(80, force)
-		safe_room.apply_impulse(force * dir)
+	var ship := get_tree().get_nodes_in_group("rooms")
+	for room in ship:
+		# idk how to assert this safely
+		assert(room is Room && room.body is RigidBody2D, "Don't touch the rooms group please!")
+		var safe_room := room as Room
+		var dist := body.global_position.distance_squared_to(safe_room.body.global_position) / 1000
+		var dir := body.global_position.direction_to(safe_room.body.global_position)
+		var inverse_square := 1000 / maxf(1.0, dist * dist)
+		var force := EXPLODE_FORCE * inverse_square
+		var damage := DAMAGE_MULT * inverse_square
+		safe_room.body.apply_impulse(force * dir)
+		safe_room.damage(damage)
 	queue_free()

@@ -31,8 +31,8 @@ window/stretch/mode="canvas_items"
 
 [global_group]
 
-room_bodies=""
 enemies=""
+rooms=""
 
 [input]
 
