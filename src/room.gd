@@ -9,6 +9,7 @@ var state := ROOM_STATE.DETACHED
 var body: RigidBody2D
 var next_shake: int = 0
 var breakaway: float = 0
+var max_breakaway := 70.0
 var tube: RID
 var welders: Array[RID]
 var host: RigidBody2D
@@ -16,6 +17,7 @@ var reattach_work: float = 0
 var repair_sign: Sprite2D
 var powered := false
 var breakaway_visual := Color(1,1,1,1)
+@export var offset_center := Vector2(0, 0)
 
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
@@ -42,7 +44,7 @@ func default_process(delta: float) -> void:
 		if breakaway < 0:
 			breakaway = 0
 #Currently color darkens over time, may make modular if that looks better
-	var rgb_values := 1-(breakaway/70)
+	var rgb_values := 1-(breakaway/max_breakaway)
 	if rgb_values < 0.15:
 		rgb_values = 0.15
 	breakaway_visual = Color(rgb_values, rgb_values, rgb_values, 1)
@@ -51,7 +53,7 @@ func default_process(delta: float) -> void:
 func default_physics_process(_delta: float) -> void:
 	if state == ROOM_STATE.ATTACHED:
 		shake()
-		if breakaway > 70:
+		if breakaway > max_breakaway:
 			set_state(ROOM_STATE.DETACHED)
 			pop_off(true)
 
@@ -125,6 +127,5 @@ func stop_welding(weldee: RID) -> void:
 func press_button(_pressed: Area2D) -> void:
 	pass
 
-#Deal damage by percent of total health
-func damage(percent: float) -> void:
-	breakaway += percent * 70/100
+func damage(amount: float) -> void:
+	breakaway += amount

@@ -6,7 +6,7 @@ const ACCEL := 50
 const SPEED := 10000
 const TURN := 60
 const EXPLODE_FORCE := 1
-const DAMAGE_MULT := 0.75
+const DAMAGE_MULT := 0.1
 
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
@@ -45,11 +45,13 @@ func _on_body_entered(_other: Node) -> void:
 	var ship := get_tree().get_nodes_in_group("rooms")
 	for room in ship:
 		# idk how to assert this safely
-		assert(room is Room && room.body is RigidBody2D, "Don't touch the rooms group please!")
+		assert(room is Room, "Don't touch the rooms group please!")
 		var safe_room := room as Room
-		var dist := body.global_position.distance_squared_to(safe_room.body.global_position) / 1000
+		var dist := body.global_position.distance_squared_to(
+			safe_room.body.global_position + safe_room.offset_center
+		) / 1000
 		var dir := body.global_position.direction_to(safe_room.body.global_position)
-		var inverse_square := 1000 / maxf(1.0, dist * dist)
+		var inverse_square := 1000 / maxf(1.0, dist)
 		var force := EXPLODE_FORCE * inverse_square
 		var damage := DAMAGE_MULT * inverse_square
 		safe_room.body.apply_impulse(force * dir)
