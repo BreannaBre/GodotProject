@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	default_process(delta)
 
 func _physics_process(delta: float) -> void:
-	if state == ATTACHED or state == REPAIRING:
+	if state == ROOM_STATE.ATTACHED or state == ROOM_STATE.REPAIRING:
 		# this replaces shake
 		thrust(delta)
 
