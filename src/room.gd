@@ -13,6 +13,7 @@ var tube: RID
 var welders: Array[RID]
 var host: RigidBody2D
 var reattach_work: float = 0
+var repair_sign: Sprite2D
 
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
@@ -23,11 +24,15 @@ func default_ready() -> void:
 	body.collision_mask  = 0b1100
 	body.add_to_group("room_bodies")
 	tube = PhysicsServer2D.joint_create()
+	if repair_sign != null:
+		repair_sign.hide()
 
 func default_process(delta: float) -> void:
 	if state == REATTACHING:
 		reattach_work -= delta * welders.size()
+		repair_sign.show()
 		if reattach_work <= 0:
+			repair_sign.hide()
 			set_state(REPAIRING)
 	elif state == REPAIRING:
 		breakaway -= delta * welders.size() * 20
