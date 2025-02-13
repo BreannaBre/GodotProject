@@ -1,15 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqr2ova5jxyuf"]
 
+[ext_resource type="Script" path="res://src/game_over_process.gd" id="1_p0bc8"]
 [ext_resource type="Texture2D" uid="uid://djiiknuwh4t66" path="res://assets/background_starry.png" id="1_q2qka"]
 [ext_resource type="Texture2D" uid="uid://drsf71xa1icuq" path="res://assets/rooms/heart_ship_left.svg" id="2_1ajhf"]
 [ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="3_0uxya"]
 [ext_resource type="Texture2D" uid="uid://bxg5cmsk2tm2h" path="res://assets/rooms/heart_ship_bg.svg" id="4_2seg0"]
 [ext_resource type="Texture2D" uid="uid://dg78g2bo78amu" path="res://assets/fishcat.png" id="5_x1uov"]
-[ext_resource type="Script" path="res://src/score.gd" id="5_xkdsx"]
 
-[node name="GameOverScreen" type="Node2D"]
+[node name="GameOverScreen" type="Node2D" node_paths=PackedStringArray("label")]
 z_index = 6
 z_as_relative = false
+script = ExtResource("1_p0bc8")
+label = NodePath("FinalScore")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -54,4 +56,3 @@ offset_right = 918.0
 offset_bottom = 414.0
 theme_override_font_sizes/font_size = 80
 text = "Time Survived: 80"
-script = ExtResource("5_xkdsx")
