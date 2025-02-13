@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	default_process(delta)
+	
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)

@@ -15,6 +15,7 @@ var host: RigidBody2D
 var reattach_work: float = 0
 var repair_sign: Sprite2D
 var powered := false
+var breakaway_visual = Color(1,1,1,1)
 
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
@@ -40,6 +41,12 @@ func default_process(delta: float) -> void:
 		breakaway -= delta * welders.size() * 20
 		if breakaway < 0:
 			breakaway = 0
+#Currently color darkens over time, may make modular if that looks better
+	var rgb_values = 1-(breakaway/70)
+	if rgb_values < 0.15:
+		rgb_values = 0.15
+	breakaway_visual = Color(rgb_values, rgb_values, rgb_values, 1)
+	modulate = breakaway_visual
 
 func default_physics_process(_delta: float) -> void:
 	if state == ATTACHED:

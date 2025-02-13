@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://src/shield.gd" id="1_8a7hv"]
 [ext_resource type="PhysicsMaterial" uid="uid://bi3h5q7jaitql" path="res://resources/room_physics_material.tres" id="2_d7n2j"]
 [ext_resource type="Texture2D" uid="uid://bgeixj7ge0wqj" path="res://assets/rooms/heart_ship_right.svg" id="3_vmp6g"]
-[ext_resource type="Texture2D" uid="uid://2x8fjmsk78ir" path="res://assets/misc/wrench_and_screwdriver.png" id="4_gag2c"]
+[ext_resource type="Texture2D" uid="uid://b0r005ufhmchs" path="res://assets/misc/wrench_and_screwdriver_white.png" id="4_0uckd"]
 [ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="5_hn4df"]
 
 [node name="ShieldRight" type="Node2D"]
+modulate = Color(0.158472, 0.158472, 0.158472, 1)
 script = ExtResource("1_8a7hv")
 
 [node name="Body" type="RigidBody2D" parent="."]
@@ -49,7 +50,7 @@ z_index = 3
 z_as_relative = false
 position = Vector2(-6, -69)
 scale = Vector2(0.1825, 0.1825)
-texture = ExtResource("4_gag2c")
+texture = ExtResource("4_0uckd")
 
 [node name="ButtonArea" type="Area2D" parent="Body"]
 position = Vector2(-60.215, -56.28)
