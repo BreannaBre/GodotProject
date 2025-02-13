@@ -106,7 +106,6 @@ frame_progress = 0.97513
 
 [node name="StartButton" type="Button" parent="."]
 z_index = 6
-anchors_preset = -1
 offset_left = 480.0
 offset_top = 320.0
 offset_right = 699.0
