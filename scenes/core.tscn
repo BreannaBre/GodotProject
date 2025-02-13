@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://xc2fnvckljx5"]
+[gd_scene load_steps=5 format=3 uid="uid://xc2fnvckljx5"]
 
 [ext_resource type="Script" path="res://src/core.gd" id="1_h7k5b"]
 [ext_resource type="PhysicsMaterial" uid="uid://bi3h5q7jaitql" path="res://resources/room_physics_material.tres" id="2_6jray"]
 [ext_resource type="Texture2D" uid="uid://djgjcuaahhrfm" path="res://assets/rooms/heart_ship_core.svg" id="3_5c7o7"]
 [ext_resource type="Texture2D" uid="uid://bxg5cmsk2tm2h" path="res://assets/rooms/heart_ship_bg.svg" id="4_3jbhk"]
-[ext_resource type="Texture2D" uid="uid://2x8fjmsk78ir" path="res://assets/misc/wrench_and_screwdriver.png" id="5_qq07y"]
 
 [node name="Core" type="Node2D"]
 script = ExtResource("1_h7k5b")
@@ -45,14 +44,6 @@ polygon = PackedVector2Array(-90, -33, -90, -89, 0, -91, 90, -89, 90, -15, 86, -
 position = Vector2(0, -4.835)
 scale = Vector2(0.247, 0.247)
 texture = ExtResource("4_3jbhk")
-
-[node name="RepairSign" type="Sprite2D" parent="Body"]
-unique_name_in_owner = true
-z_index = 3
-z_as_relative = false
-position = Vector2(-2.38419e-07, -12)
-scale = Vector2(0.1825, 0.1825)
-texture = ExtResource("5_qq07y")
 
 [node name="Area2D" type="Area2D" parent="Body"]
 collision_layer = 8
