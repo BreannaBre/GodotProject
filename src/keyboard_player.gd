@@ -63,7 +63,6 @@ func _process(_delta: float) -> void:
 		current_welded.stop_welding(get_rid())
 
 	if Input.is_action_just_pressed("Player1Interact"):
-		print("pressing")
 		var space := get_world_2d().direct_space_state
 		button_picker_params.position = global_position
 		for result in space.intersect_point(button_picker_params, 1):
@@ -72,5 +71,4 @@ func _process(_delta: float) -> void:
 			var collider := result["collider"] as Area2D
 			var unsafe_pressed := collider.get_parent().get_parent()
 			assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
-			print("found something")
 			(unsafe_pressed as Room).press_button(collider)

@@ -26,22 +26,18 @@ func default_ready() -> void:
 	body.collision_layer = 0b1000
 	body.collision_mask  = 0b1100
 	tube = PhysicsServer2D.joint_create()
-	if repair_sign != null:
-		repair_sign.hide()
 
 func default_process(delta: float) -> void:
 	if state == ROOM_STATE.REATTACHING:
 		reattach_work -= delta * welders.size()
-		repair_sign.show()
 		if reattach_work <= 0:
-			repair_sign.hide()
 			breakaway = 0
 			set_state(ROOM_STATE.REPAIRING)
 	elif state == ROOM_STATE.REPAIRING:
 		breakaway -= delta * welders.size() * 20
 		if breakaway < 0:
 			breakaway = 0
-#Currently color darkens over time, may make modular if that looks better
+# Currently color darkens over time, may make modular if that looks better
 	var rgb_values := 1-(breakaway/70)
 	if rgb_values < 0.15:
 		rgb_values = 0.15
@@ -62,12 +58,20 @@ func set_state(new_state: ROOM_STATE) -> void:
 	state = new_state
 	if state == ROOM_STATE.DETACHED:
 		body.gravity_scale = 1
+		if repair_sign != null:
+			repair_sign.hide()
 	elif state == ROOM_STATE.ATTACHED:
 		body.gravity_scale = 0
+		if repair_sign != null:
+			repair_sign.hide()
 	elif state == ROOM_STATE.REATTACHING:
 		body.gravity_scale = 0
+		if repair_sign != null:
+			repair_sign.show()
 	elif state == ROOM_STATE.REPAIRING:
 		body.gravity_scale = 0
+		if repair_sign != null:
+			repair_sign.hide()
 
 func set_pos(new_pos: Vector2) -> void:
 	body.transform.origin = new_pos
@@ -88,7 +92,6 @@ func pop_off(violent: bool) -> void:
 		body.linear_velocity = new_vel
 
 func pop_on() -> void:
-	# I'm still not entirely sure how this stuff works ;-;
 	PhysicsServer2D.joint_make_damped_spring(tube, body.global_position, body.global_position, host, body)
 	PhysicsServer2D.damped_spring_joint_set_param(tube, PhysicsServer2D.DAMPED_SPRING_REST_LENGTH, 0)
 	PhysicsServer2D.damped_spring_joint_set_param(tube, PhysicsServer2D.DAMPED_SPRING_STIFFNESS, 10)
@@ -125,6 +128,6 @@ func stop_welding(weldee: RID) -> void:
 func press_button(_pressed: Area2D) -> void:
 	pass
 
-#Deal damage by percent of total health
+# Deal damage by percent of total health
 func damage(percent: float) -> void:
 	breakaway += percent * 70/100
