@@ -84,6 +84,7 @@ animations = [{
 }]
 
 [sub_resource type="SystemFont" id="SystemFont_a071j"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_5fitb"]
 font = SubResource("SystemFont_a071j")

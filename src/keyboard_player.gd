@@ -4,6 +4,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -350.0
 
 var sprite: Sprite2D
+var starting_position := Vector2(584.12, 299.025)
 
 var weld_picker_params := PhysicsPointQueryParameters2D.new()
 var button_picker_params := PhysicsPointQueryParameters2D.new()
@@ -72,3 +73,11 @@ func _process(_delta: float) -> void:
 			var unsafe_pressed := collider.get_parent().get_parent()
 			assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
 			(unsafe_pressed as Room).press_button(collider)
+	
+	var current_screen_size_y = get_viewport_rect().size.y
+	if position.y > current_screen_size_y*3:
+		reset_position()
+
+func reset_position() -> void:
+	velocity = Vector2(0,0)
+	position = starting_position
