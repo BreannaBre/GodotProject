@@ -33,7 +33,7 @@ func default_process(delta: float) -> void:
 		if breakaway < 0:
 			breakaway = 0
 
-func default_physics_process(delta: float) -> void:
+func default_physics_process(_delta: float) -> void:
 	if state == ATTACHED:
 		shake()
 		if breakaway > 70:
@@ -82,7 +82,7 @@ func fire(_new_target: Vector2) -> void:
 func shake() -> void:
 	var cur := Time.get_ticks_msec()
 	if cur > next_shake:
-		next_shake = cur + randf_range(10000/(breakaway+1), 50000/(breakaway+1))
+		next_shake = cur + randf_range(10000/(breakaway+1), 50000/(breakaway+1)) as int
 		breakaway += 1
 		var impulse := Vector2(randf_range(-breakaway, breakaway), randf_range(-breakaway, breakaway))
 		body.apply_impulse(impulse)

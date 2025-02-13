@@ -36,19 +36,19 @@ func _ready() -> void:
 	mouse_params.collide_with_bodies = false
 	mouse_params.collision_mask = 0b1000
 
-	var mid := add_room(CORE_SCENE, core_coords)
-	var left := add_room(SHIELD_LEFT_SCENE, core_coords + Vector2(-181,0))
-	var top_left := add_room(GUNNERY_LEFT_SCENE, core_coords + Vector2(-181,-181))
-	var top := add_room(PENTAGON_SCENE, core_coords + Vector2(0,-181))
-	var top_right := add_room(GUNNERY_RIGHT_SCENE, core_coords + Vector2(181,-181))
-	var right := add_room(SHIELD_RIGHT_SCENE, core_coords + Vector2(181,0))
-	var bottom := add_room(THRUSTER_SCENE, core_coords + Vector2(0,181))
-	bottom.set_target(core_coords + Vector2(0,181))
+	var core := add_room(CORE_SCENE, core_coords)
+	add_room(SHIELD_LEFT_SCENE, core_coords + Vector2(-181,0))
+	add_room(GUNNERY_LEFT_SCENE, core_coords + Vector2(-181,-181))
+	add_room(PENTAGON_SCENE, core_coords + Vector2(0,-181))
+	add_room(GUNNERY_RIGHT_SCENE, core_coords + Vector2(181,-181))
+	add_room(SHIELD_RIGHT_SCENE, core_coords + Vector2(181,0))
+	var thruster := add_room(THRUSTER_SCENE, core_coords + Vector2(0,181))
+	thruster.set_target(core_coords + Vector2(0,181))
 
 	for room in rooms:
 		if room is Core:
 			continue
-		room.set_host(mid.body)
+		room.set_host(core.body)
 
 	for room in rooms:
 		room.set_state(room.ATTACHED)

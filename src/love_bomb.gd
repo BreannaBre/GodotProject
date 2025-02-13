@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	var target_angle := body.linear_velocity.angle_to(target - body.position)
 	var heading := body.linear_velocity.normalized()
 	var force := Vector2(0,0)
-	
+
 	sprite.flip_h = heading.x < 0
 
 	if speed > SPEED+20:

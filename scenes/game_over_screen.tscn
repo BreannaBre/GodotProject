@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="3_0uxya"]
 [ext_resource type="Texture2D" uid="uid://bxg5cmsk2tm2h" path="res://assets/rooms/heart_ship_bg.svg" id="4_2seg0"]
 [ext_resource type="Texture2D" uid="uid://dg78g2bo78amu" path="res://assets/fishcat.png" id="5_x1uov"]
-[ext_resource type="Script" path="res://scenes/score.gd" id="5_xkdsx"]
+[ext_resource type="Script" path="res://src/score.gd" id="5_xkdsx"]
 
 [node name="GameOverScreen" type="Node2D"]
 z_index = 6

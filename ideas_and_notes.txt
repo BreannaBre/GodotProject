@@ -1,7 +1,7 @@
 Ship
 	5 nodes? 9x9?
 	fragmentation occurs at nodes
-	deteriation is shown possibly by wires that are attached to ship 
+	deteriation is shown possibly by wires that are attached to ship
 
 Players
 	1 mouse 1 keyboard/controller minimum

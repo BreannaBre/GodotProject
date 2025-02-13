@@ -2,7 +2,7 @@ extends Label
 
 
 # Called when the node enters the scene tree for the first time.
-var time = 0
+var time: float = 0
 func _ready() -> void:
 	text = "Time Survived: 0"
 
