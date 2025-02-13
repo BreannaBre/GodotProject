@@ -5,7 +5,7 @@ var sprite: Sprite2D
 const ACCEL := 50
 const SPEED := 10000
 const TURN := 60
-const EXPLODE_FORCE := 20000
+const EXPLODE_FORCE := 800000
 
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
@@ -45,8 +45,9 @@ func _on_body_entered(_other: Node) -> void:
 	for room_body in ship:
 		assert(room_body is RigidBody2D, "Don't touch the room_bodies group please!")
 		var safe_room := room_body as RigidBody2D
-		var dist := body.global_position.distance_to(safe_room.global_position)
+		var dist := body.global_position.distance_squared_to(safe_room.global_position)
 		var dir := body.global_position.direction_to(safe_room.global_position)
 		var force := EXPLODE_FORCE / maxf(1.0, dist)
+		force = minf(80, force)
 		safe_room.apply_impulse(force * dir)
 	queue_free()
