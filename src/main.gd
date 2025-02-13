@@ -18,8 +18,9 @@ var mouse_params := PhysicsPointQueryParameters2D.new()
 const ANGRY_FACE_SCENE := preload("res://scenes/love_bomb.tscn")
 var enemies: Array[Enemy] = []
 var windowSize := DisplayServer.screen_get_size()
-const SPAWN_DELTA := 0.25
-const INIT_DELAY := 3.0
+const SPAWN_DELTA := 0.0625
+const INIT_DELAY := 6.0
+const MIN_DELAY := 3.0
 var spawn_delay: float
 var spawn_tick_acc: float
 
@@ -114,8 +115,9 @@ func spawn_tick(delta: float) -> void:
 	spawn_tick_acc += delta
 	if (spawn_tick_acc > spawn_delay):
 		spawn_tick_acc = 0
-		spawn_delay = maxf(spawn_delay - SPAWN_DELTA, SPAWN_DELTA)
-		var location := windowSize.x/2 * Vector2.from_angle(randf_range(-PI, 0))
+		spawn_delay = maxf(spawn_delay - SPAWN_DELTA, MIN_DELAY)
+		var location := windowSize.y/2 * Vector2.from_angle(randf_range(-PI, 0))
+		location.x = windowSize.x/2 * signf(location.x)
 		var new_enemy := add_enemy(ANGRY_FACE_SCENE, location + core_coords)
 		new_enemy.set_target(core_coords)
 
