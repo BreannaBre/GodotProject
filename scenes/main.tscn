@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp4bxbuy3jetc"]
+[gd_scene load_steps=6 format=3 uid="uid://dp4bxbuy3jetc"]
 
 [ext_resource type="PackedScene" uid="uid://ba73xxekccsg" path="res://scenes/keyboard_player.tscn" id="1_m6610"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_rjrnr"]
 [ext_resource type="PackedScene" uid="uid://rj3h28pvb2lv" path="res://scenes/background.tscn" id="2_o17ss"]
+[ext_resource type="Script" path="res://scenes/score.gd" id="4_by4x4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wefyx"]
 size = Vector2(1, 1)
@@ -22,3 +23,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBody"]
 shape = SubResource("RectangleShape2D_wefyx")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 976.0
+offset_top = 28.0
+offset_right = 1016.0
+offset_bottom = 51.0
+script = ExtResource("4_by4x4")
