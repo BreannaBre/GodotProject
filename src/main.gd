@@ -108,8 +108,6 @@ func add_room(room: PackedScene, coords: Vector2) -> Room:
 	add_child(new_room)
 	new_room.set_pos(coords)
 	rooms.append(new_room)
-	# TODO: maybe move this?
-	new_room.body.add_to_group("room_bodies")
 	return new_room
 
 func spawn_tick(delta: float) -> void:
@@ -120,7 +118,6 @@ func spawn_tick(delta: float) -> void:
 		var location := windowSize.x/2 * Vector2.from_angle(randf_range(-PI, 0))
 		var new_enemy := add_enemy(ANGRY_FACE_SCENE, location + core_coords)
 		new_enemy.set_target(core_coords)
-		new_enemy.set_sleep(false)
 
 func add_enemy(enemy: PackedScene, coords: Vector2) -> Enemy:
 	var new_node := enemy.instantiate()

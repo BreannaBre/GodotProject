@@ -22,6 +22,7 @@ func default_ready() -> void:
 	body.linear_damp = 1
 	body.collision_layer = 0b1000
 	body.collision_mask  = 0b1100
+	body.add_to_group("room_bodies")
 	tube = PhysicsServer2D.joint_create()
 	if repair_sign != null:
 		repair_sign.hide()
@@ -110,5 +111,5 @@ func stop_welding(weldee: RID) -> void:
 			reattach_work = REATTACH_TIME
 			pop_off(false)
 
-func press_button(pressed: Area2D) -> void:
+func press_button(_pressed: Area2D) -> void:
 	pass

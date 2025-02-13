@@ -19,9 +19,9 @@ func _ready() -> void:
 	weld_picker_params.collide_with_bodies = false
 	weld_picker_params.collision_mask = 0b1_0000
 	# we only want to collide with the button areas
-	weld_picker_params.collide_with_areas = true
-	weld_picker_params.collide_with_bodies = false
-	weld_picker_params.collision_mask = 0b1000
+	button_picker_params.collide_with_areas = true
+	button_picker_params.collide_with_bodies = false
+	button_picker_params.collision_mask = 0b1000
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -62,13 +62,13 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_released("Player1Weld"):
 		current_welded.stop_welding(get_rid())
 
-	#if Input.is_action_just_pressed("Player1Interact"):
-		#var space := get_world_2d().direct_space_state
-		#button_picker_params.position = global_position
-		#for result in space.intersect_point(button_picker_params, 1):
-			## I know it's "unsafe", but I think it's pretty safe.
-			## Plus I don't want to look up how to make it safe.
-			#var collider := result["collider"] as Area2D
-			#var unsafe_pressed := collider.get_parent().get_parent()
-			#assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
-			#(unsafe_pressed as Room).press_button(collider)
+	if Input.is_action_just_pressed("Player1Interact"):
+		var space := get_world_2d().direct_space_state
+		button_picker_params.position = global_position
+		for result in space.intersect_point(button_picker_params, 1):
+			# I know it's "unsafe", but I think it's pretty safe.
+			# Plus I don't want to look up how to make it safe.
+			var collider := result["collider"] as Area2D
+			var unsafe_pressed := collider.get_parent().get_parent()
+			assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
+			(unsafe_pressed as Room).press_button(collider)

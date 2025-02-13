@@ -1,13 +1,18 @@
-Ship
-	5 nodes? 9x9?
-	fragmentation occurs at nodes
-	deteriation is shown possibly by wires that are attached to ship
-
 Players
 	1 mouse 1 keyboard/controller minimum
 	looking to further more keyboard/controllers
 
-	Mouse player does external tasks, keyboard players do internal tasks
+Misc:
+	cleanup fallen rooms
+	maybe drop new rooms?
+	radius for room attachment?
+	new enemy?
+		candygram enemies with random text
+		heartburn
+	room healthbar
+	logo / titlescreen something?
+	shield / guns / special / buttons for all 3
+	make enemies do damage
 
 TODO:
 	fix these:
