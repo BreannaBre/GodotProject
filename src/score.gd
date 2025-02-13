@@ -11,5 +11,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time += delta
 	text = "Time Survived: " + str(int(time))
-
-#TODO: need function to stop time when game ends
