@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="5_hn4df"]
 
 [node name="ShieldRight" type="Node2D"]
-modulate = Color(0.158472, 0.158472, 0.158472, 1)
 script = ExtResource("1_8a7hv")
 offset_center = Vector2(-50, 50)
 

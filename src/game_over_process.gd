@@ -1,3 +1,4 @@
+class_name GameOver
 extends Node2D
 
 @export var label: Label
