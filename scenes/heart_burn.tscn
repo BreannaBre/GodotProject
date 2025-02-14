@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpx0tbbru2p1k"]
 
 [ext_resource type="Script" path="res://src/heart_burn.gd" id="1_qxc1l"]
-[ext_resource type="Texture2D" uid="uid://bif3xo5npfras" path="res://assets/misc/fire_frame_1.svg" id="2_1q8bg"]
+[ext_resource type="Texture2D" uid="uid://cigq1mf2w6i1l" path="res://assets/enemies/heart_burn.svg" id="2_adaim"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc5fp"]
 radius = 30.0
@@ -18,8 +18,9 @@ max_contacts_reported = 2
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 unique_name_in_owner = true
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_1q8bg")
+position = Vector2(4.76837e-07, -1.3113e-06)
+scale = Vector2(0.164456, 0.164456)
+texture = ExtResource("2_adaim")
 
 [node name="Shape" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_tc5fp")

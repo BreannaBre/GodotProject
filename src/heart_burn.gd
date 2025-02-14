@@ -7,7 +7,7 @@ const TURN := 60
 const EXPLODE_FORCE := 1
 const DAMAGE_MULT := 0.1
 const STOP_DIST = 500
-const PROJ_TIMER := 1.0
+const PROJ_TIMER := 3.0
 var accumulator := 0.0
 
 const FLAME := preload("res://scenes/flame.tscn")
@@ -22,6 +22,9 @@ func _ready() -> void:
 	default_ready()
 
 func _process(_delta: float) -> void:
+	if target.distance_to(body.position) >= STOP_DIST:
+		return
+
 	accumulator += _delta
 	if (accumulator > PROJ_TIMER):
 		accumulator = 0

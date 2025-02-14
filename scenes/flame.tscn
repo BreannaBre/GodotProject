@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp4l85naudxer"]
 
 [ext_resource type="Script" path="res://src/flame.gd" id="1_0no6i"]
-[ext_resource type="Texture2D" uid="uid://bif3xo5npfras" path="res://assets/misc/fire_frame_1.svg" id="2_oxtko"]
+[ext_resource type="Texture2D" uid="uid://rolue0nguduu" path="res://assets/enemies/flame.svg" id="2_lfnea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xuxj"]
 size = Vector2(20, 15)
@@ -27,6 +27,6 @@ z_as_relative = false
 position = Vector2(-1, -2)
 rotation = -0.706717
 scale = Vector2(0.0617284, 0.05)
-texture = ExtResource("2_oxtko")
+texture = ExtResource("2_lfnea")
 
 [connection signal="body_entered" from="Body" to="." method="_on_body_entered"]
