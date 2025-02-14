@@ -17,12 +17,15 @@ var flames: Array[Flame]
 
 var flame_sound := preload("res://assets/sounds/flame.mp3")
 var flame_player: AudioStreamPlayer2D
+var dead_sound := preload("res://assets/sounds/ah.mp3")
+var dead_player: AudioStreamPlayer2D
 
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
 	assert(body_unsafe is RigidBody2D, "Somebody's been mucking with the heart burn nodes")
 	body = body_unsafe as RigidBody2D
 	flame_player = get_node("%FlamePlayer")
+	dead_player = get_parent().get_node("%DeadPlayer")
 	default_ready()
 
 func _process(_delta: float) -> void:
@@ -78,4 +81,7 @@ func shoot_projectile() -> void:
 	flames.append(new_flame)
 
 func _on_body_entered(_other: Node) -> void:
+	if !dead_player.is_playing():
+		dead_player.stream = dead_sound
+		dead_player.play()
 	queue_free()

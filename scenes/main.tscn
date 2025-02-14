@@ -43,3 +43,6 @@ volume_db = 20.0
 
 [node name="ExplodePlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+
+[node name="DeadPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
