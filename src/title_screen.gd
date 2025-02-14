@@ -14,7 +14,6 @@ func _ready() -> void:
 	orange_planet.play()
 	#game doesn't start/process until start button is pressed
 	get_tree().paused = true
-	Timer
 
 #when game starts this *disappears* and doesn't come back unless we implement it
 func _on_start_button_pressed() -> void:

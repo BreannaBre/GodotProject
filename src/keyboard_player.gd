@@ -74,7 +74,7 @@ func _process(_delta: float) -> void:
 			assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
 			(unsafe_pressed as Room).press_button(collider)
 	
-	var current_screen_size_y = get_viewport_rect().size.y
+	var current_screen_size_y := get_viewport_rect().size.y
 	if position.y > current_screen_size_y*3:
 		reset_position()
 

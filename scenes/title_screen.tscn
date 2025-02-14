@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dw1hldrb7563r"]
+[gd_scene load_steps=29 format=3 uid="uid://dw1hldrb7563r"]
 
 [ext_resource type="Script" path="res://src/title_screen.gd" id="1_li7gw"]
 [ext_resource type="Texture2D" uid="uid://djiiknuwh4t66" path="res://assets/background_starry.png" id="1_xfhsh"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ya32qlvrwmo" path="res://assets/orange_planet_frames/orange_planet_frame0005.png" id="16_v702j"]
 [ext_resource type="Texture2D" uid="uid://b7fdii3ek7vyf" path="res://assets/orange_planet_frames/orange_planet_frame0006.png" id="17_hio3u"]
 [ext_resource type="Texture2D" uid="uid://b8eerk4g2c7c8" path="res://assets/orange_planet_frames/orange_planet_frame0007.png" id="18_mabck"]
+[ext_resource type="AudioStream" uid="uid://ds5f6s628lyk4" path="res://assets/menu_music.wav" id="19_y0s31"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ao57"]
 animations = [{
@@ -275,6 +276,9 @@ offset_top = 24.0
 offset_right = 1120.0
 offset_bottom = 616.0
 text = "HOW TO PLAY"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_y0s31")
+autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
