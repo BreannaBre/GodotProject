@@ -9,8 +9,8 @@ var body: RigidBody2D
 func default_ready() -> void:
 	body.gravity_scale = 0
 	body.lock_rotation = true
-	body.collision_layer = 0b0100
-	body.collision_mask  = 0b1100
+	body.collision_layer = 0b0000_0100
+	body.collision_mask  = 0b0001_1100
 	add_to_group("enemies")
 
 func set_target(new_target: Vector2) -> void:

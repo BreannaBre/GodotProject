@@ -6,11 +6,11 @@ const UNPOWERED_GUN := preload("res://assets/misc/bow_charging.svg")
 const ARROW := preload("res://scenes/arrow.tscn")
 var gun_picture: Sprite2D
 const GUN_SCALE := Vector2(0.247, 0.247)
-var cur_arrow: Arrow = null
-const ARROW_SPEED: float = 500
 var arrows: Array[Arrow]
 # It's not super important, so it can be really big
 const RANGE_SQUARED: float = 2000 * 2000
+const ARROW_SPEED: float = 500
+var last_fire: int = 0
 
 func _ready() -> void:
 	var gun_picture_unsafe := get_node("%GunPicture")
@@ -36,27 +36,28 @@ func _process(delta: float) -> void:
 	if powered:
 		var new_rotation := body.transform.origin.angle_to_point(target)
 		gun_picture.transform = Transform2D(new_rotation, GUN_SCALE, 0, Vector2(0,0))
-		cur_arrow.set_trans(new_rotation, body.global_position)
 
 func fire(new_target: Vector2) -> void:
-	if cur_arrow != null:
-		cur_arrow.fire((new_target-body.global_position).normalized()*ARROW_SPEED, body.global_position)
-		arrows.append(cur_arrow)
-		cur_arrow = ARROW.instantiate() as Arrow
-		add_child(cur_arrow)
+	if not powered:
+		return
+
+	var now := Time.get_ticks_msec()
+	if now - last_fire < 1000:
+		return
+	last_fire = now
+	var new_arrow := ARROW.instantiate() as Arrow
+	add_child(new_arrow)
+	var angle := body.transform.origin.angle_to_point(target)
+	new_arrow.body.transform = Transform2D(angle, body.position)
+	new_arrow.body.linear_velocity = Vector2(ARROW_SPEED, 0).rotated(angle)
+	arrows.append(new_arrow)
 
 func set_powered(new_powered: bool) -> void:
 	powered = new_powered
 	if powered:
 		gun_picture.texture = POWERED_GUN
-		if cur_arrow == null:
-			cur_arrow = ARROW.instantiate() as Arrow
-			add_child(cur_arrow)
 	else:
 		gun_picture.texture = UNPOWERED_GUN
-		if cur_arrow != null:
-			cur_arrow.queue_free()
-			cur_arrow = null
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)
