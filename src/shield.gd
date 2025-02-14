@@ -7,6 +7,10 @@ const POWERED_BUTTON := preload("res://assets/misc/shield_ready.svg")
 const UNPOWERED_BUTTON := preload("res://assets/misc/shield_charging.svg")
 var button_sprite: Sprite2D
 
+var shield_on_sound := preload("res://assets/sounds/shield_on.mp3")
+var shield_off_sound := preload("res://assets/sounds/shield_off.mp3")
+@export var shield_player: AudioStreamPlayer2D
+
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
 	assert(body_unsafe is RigidBody2D, "Somebody's been mucking with the shield nodes")
@@ -42,5 +46,11 @@ func set_powered(new_powered: bool) -> void:
 	powered = new_powered
 	if powered:
 		button_sprite.texture = POWERED_BUTTON
+		if !shield_player.is_playing():
+			shield_player.stream = shield_on_sound
+			shield_player.play()
 	else:
 		button_sprite.texture = UNPOWERED_BUTTON
+		if !shield_player.is_playing():
+			shield_player.stream = shield_off_sound
+			shield_player.play()

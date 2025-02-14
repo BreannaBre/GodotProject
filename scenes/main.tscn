@@ -36,3 +36,10 @@ script = ExtResource("4_by4x4")
 
 [node name="TitleScreen" parent="." instance=ExtResource("5_s888o")]
 z_index = 7
+
+[node name="PopPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = 20.0
+
+[node name="ExplodePlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

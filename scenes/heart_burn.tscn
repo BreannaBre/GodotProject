@@ -25,4 +25,7 @@ texture = ExtResource("2_adaim")
 [node name="Shape" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_tc5fp")
 
+[node name="FlamePlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="body_entered" from="Body" to="." method="_on_body_entered"]

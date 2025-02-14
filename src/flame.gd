@@ -10,7 +10,7 @@ func _ready() -> void:
 	body = body_unsafe as RigidBody2D
 
 func _on_body_entered(other: Node) -> void:
-	var room = other.get_parent()
+	var room := other.get_parent()
 	assert(room is Room, "Collided with something that's not a room")
-	room.damage(DAMAGE)
+	(room as Room).damage(DAMAGE)
 	queue_free()

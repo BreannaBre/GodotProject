@@ -12,6 +12,10 @@ const RANGE_SQUARED: float = 2000 * 2000
 const ARROW_SPEED: float = 500
 var last_fire: int = 0
 
+var bullet_sound := preload("res://assets/sounds/bullet.mp3")
+var power_sound := preload("res://assets/sounds/load_gun.mp3")
+@export var sound_player: AudioStreamPlayer2D
+
 func _ready() -> void:
 	var gun_picture_unsafe := get_node("%GunPicture")
 	assert(gun_picture_unsafe is Sprite2D, "Somebody's been mucking with the gunnery nodes")
@@ -45,6 +49,12 @@ func fire(_new_target: Vector2) -> void:
 	if now - last_fire < 1000:
 		return
 	last_fire = now
+	
+	if !sound_player.is_playing():
+		sound_player.volume_db = 20.0
+		sound_player.stream = bullet_sound
+		sound_player.play()
+	
 	var new_arrow := ARROW.instantiate() as Arrow
 	add_child(new_arrow)
 	var angle := body.transform.origin.angle_to_point(target)
@@ -55,6 +65,10 @@ func fire(_new_target: Vector2) -> void:
 func set_powered(new_powered: bool) -> void:
 	powered = new_powered
 	if powered:
+		if !sound_player.is_playing():
+			sound_player.volume_db = 0.0
+			sound_player.stream = power_sound
+			sound_player.play()
 		gun_picture.texture = POWERED_GUN
 	else:
 		gun_picture.texture = UNPOWERED_GUN
