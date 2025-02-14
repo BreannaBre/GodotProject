@@ -291,6 +291,7 @@ scale = Vector2(27.68, 14.72)
 color = Color(0.226707, 0.226707, 0.226707, 1)
 
 [node name="PlayerKeys" type="RichTextLabel" parent="HowToPlayPage"]
+layout_mode = 0
 offset_left = -32.0
 offset_top = -24.0
 offset_right = 400.0
@@ -311,6 +312,7 @@ Mouse Player
 	Move Ship Part: Right-Click"
 
 [node name="TIPS" type="RichTextLabel" parent="HowToPlayPage"]
+layout_mode = 0
 offset_left = 424.0
 offset_top = -24.0
 offset_right = 792.0
