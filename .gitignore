@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+keep_it_together_windows/
+keep_it_together_linux/
+keep_it_together_windows.zip
+keep_it_together_linux.zip
