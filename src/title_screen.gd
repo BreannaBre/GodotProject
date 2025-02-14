@@ -3,6 +3,7 @@ extends Node2D
 var blue_planet: AnimatedSprite2D
 var orange_planet: AnimatedSprite2D
 var how_to_play_page: Control
+const PAUSE_SCREEN := preload("res://scenes/pause.tscn")
 
 func _ready() -> void:
 	var blue_planet_unsafe := get_node("Background/BluePlanetAnimation")
@@ -20,9 +21,9 @@ func _ready() -> void:
 	how_to_play_page.hide()
 	get_tree().paused = true
 
-#when game starts this *disappears* and doesn't come back unless we implement it
 func _on_start_button_pressed() -> void:
 	get_tree().paused = false
+	get_parent().add_child(PAUSE_SCREEN.instantiate())
 	self.queue_free()
 
 func _on_how_to_play_button_pressed() -> void:
