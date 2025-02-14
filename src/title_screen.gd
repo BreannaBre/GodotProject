@@ -21,6 +21,5 @@ func _on_start_button_pressed() -> void:
 	get_tree().paused = false
 	self.queue_free()
 
-#NOTE: I accidently only made startButton the top order of visibility but it created a kind fire title screen
-#set title screen to ordering 6 if we want a title
-#Also just remove TitleScreen from main if it gets annoying during testing, just link back in and it works
+func _on_how_to_play_button_pressed() -> void:
+	pass
