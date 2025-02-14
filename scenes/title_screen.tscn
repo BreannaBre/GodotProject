@@ -305,11 +305,11 @@ Keyboard Player
    Movement: Left and right Arrow
 	Jump: Up Arrow 
 	Repair/Reattatch Ship Room: Down Arrow
-	Turn on Shield or Guns: (/)
+	Turn on Shield or Guns: Slash (/)
 
 Mouse Player
 	Fire Gun: Left-Click
-	Move Ship Part: Right-Click"
+	Move Ship Part: Right-Click Drag"
 
 [node name="TIPS" type="RichTextLabel" parent="HowToPlayPage"]
 layout_mode = 0
@@ -322,12 +322,9 @@ text = "TIPS
 
 You have limited power to divert to your guns and shields. Choose Wisely!
 
-Pieces may pop off over time. Work together to reattach pieces!
+Pieces may pop off over time. While one player drags it back into place, the other can hold repair to reattach it.
 
-Keep your core room alive! You can lose other rooms, but it's game over if your core runs out of health
-
-
-"
+Keep your core room alive! You can lose other rooms, but it's game over if your core runs out of health."
 
 [node name="CloseButton" type="Button" parent="HowToPlayPage"]
 layout_mode = 0
