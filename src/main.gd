@@ -21,10 +21,12 @@ const HEART_BURN_SCENE := preload("res://scenes/heart_burn.tscn")
 var enemies: Array[Enemy] = []
 var windowSize := DisplayServer.screen_get_size()
 const SPAWN_DELTA := 0.05
-const INIT_DELAY := 3.0
-const MIN_DELAY := 0.1
+const INIT_DELAY := 2.0
+const MIN_DELAY := 0.5
+const DEC_RATE := 5.0
 var spawn_delay: float
 var spawn_tick_acc: float
+var decrement_acc: float
 
 var previous_room: Room
 var current_room: Room
@@ -32,6 +34,7 @@ var current_room: Room
 func _ready() -> void:
 	spawn_delay = INIT_DELAY
 	spawn_tick_acc=0
+	decrement_acc=0
 
 	core_coords = get_viewport_rect().size / 2
 	var body_unsafe := get_node("%MouseBody")
@@ -67,6 +70,11 @@ func _ready() -> void:
 		room.pop_on()
 
 func _process(delta: float) -> void:
+	decrement_acc += delta
+	if (decrement_acc > DEC_RATE):
+		spawn_delay = maxf(spawn_delay - SPAWN_DELTA, MIN_DELAY)
+		decrement_acc = 0
+
 	var new_enemies: Array[Enemy]
 	for enemy in enemies:
 		if is_instance_valid(enemy):
@@ -126,7 +134,6 @@ func spawn_tick(delta: float) -> void:
 	spawn_tick_acc += delta
 	if (spawn_tick_acc > spawn_delay):
 		spawn_tick_acc = 0
-		spawn_delay = maxf(spawn_delay - SPAWN_DELTA, MIN_DELAY)
 		var location := windowSize.y/2 * Vector2.from_angle(randf_range(-PI, 0))
 		location.x = windowSize.x/2 * signf(location.x)
 		var new_enemy := add_enemy(
