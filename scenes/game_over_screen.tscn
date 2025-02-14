@@ -36,7 +36,7 @@ scale = Vector2(0.03, 0.03)
 texture = ExtResource("4_2seg0")
 
 [node name="CatfishSprite" type="Sprite2D" parent="Background"]
-position = Vector2(-165, 196)
+position = Vector2(-272, 180)
 rotation = -5.9493
 scale = Vector2(-0.1, -0.1)
 texture = ExtResource("5_x1uov")
@@ -56,3 +56,14 @@ offset_right = 1076.0
 offset_bottom = 422.0
 theme_override_font_sizes/font_size = 80
 text = "Time Survived: 80 seconds"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 464.0
+offset_right = 709.0
+offset_bottom = 568.0
+theme_override_font_sizes/font_size = 70
+text = "Restart
+"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
