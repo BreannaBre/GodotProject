@@ -20,9 +20,9 @@ const LOVE_BOMB_SCENE := preload("res://scenes/love_bomb.tscn")
 const HEART_BURN_SCENE := preload("res://scenes/heart_burn.tscn")
 var enemies: Array[Enemy] = []
 var windowSize := DisplayServer.screen_get_size()
-const SPAWN_DELTA := 0.0625
-const INIT_DELAY := 1.0
-const MIN_DELAY := 1.0
+const SPAWN_DELTA := 0.05
+const INIT_DELAY := 3.0
+const MIN_DELAY := 0.1
 var spawn_delay: float
 var spawn_tick_acc: float
 

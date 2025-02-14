@@ -12,6 +12,7 @@ radius = 37.0
 [node name="GunneryRight" type="Node2D" node_paths=PackedStringArray("sound_player")]
 script = ExtResource("1_ntmc0")
 sound_player = NodePath("BulletPlayer")
+left = false
 
 [node name="Body" type="RigidBody2D" parent="."]
 unique_name_in_owner = true

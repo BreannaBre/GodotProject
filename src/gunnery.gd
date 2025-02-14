@@ -16,6 +16,8 @@ var bullet_sound := preload("res://assets/sounds/bullet.mp3")
 var power_sound := preload("res://assets/sounds/load_gun.mp3")
 @export var sound_player: AudioStreamPlayer2D
 
+@export var left: bool = true
+
 func _ready() -> void:
 	var gun_picture_unsafe := get_node("%GunPicture")
 	assert(gun_picture_unsafe is Sprite2D, "Somebody's been mucking with the gunnery nodes")
@@ -38,7 +40,12 @@ func _process(delta: float) -> void:
 			new_arrows.append(arrow)
 	arrows = new_arrows
 	if powered:
-		var new_rotation := body.transform.origin.angle_to_point(target)
+		var mod_target: Vector2
+		if left:
+			mod_target = Vector2(minf(target.x, body.global_position.x), target.y)
+		else:
+			mod_target = Vector2(maxf(target.x, body.global_position.x), target.y)
+		var new_rotation := body.transform.origin.angle_to_point(mod_target)
 		gun_picture.transform = Transform2D(new_rotation, GUN_SCALE, 0, Vector2(0,0))
 
 func fire(_new_target: Vector2) -> void:
@@ -49,15 +56,20 @@ func fire(_new_target: Vector2) -> void:
 	if now - last_fire < 1000:
 		return
 	last_fire = now
-	
+
 	if !sound_player.is_playing():
 		sound_player.volume_db = 20.0
 		sound_player.stream = bullet_sound
 		sound_player.play()
-	
+
+	var mod_target: Vector2
+	if left:
+		mod_target = Vector2(minf(target.x, body.global_position.x), target.y)
+	else:
+		mod_target = Vector2(maxf(target.x, body.global_position.x), target.y)
 	var new_arrow := ARROW.instantiate() as Arrow
 	add_child(new_arrow)
-	var angle := body.transform.origin.angle_to_point(target)
+	var angle := body.transform.origin.angle_to_point(mod_target)
 	new_arrow.body.transform = Transform2D(angle, body.position)
 	new_arrow.body.linear_velocity = Vector2(ARROW_SPEED, 0).rotated(angle)
 	arrows.append(new_arrow)
