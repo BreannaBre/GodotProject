@@ -148,23 +148,20 @@ frame = 7
 frame_progress = 0.97513
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 480.0
+offset_left = 486.0
 offset_top = 320.0
-offset_right = 699.0
-offset_bottom = 452.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.877908, 0.889999)
+offset_right = 666.0
+offset_bottom = 411.0
 theme_override_colors/icon_hover_color = Color(0.266575, 0.266575, 0.266575, 1)
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 60
 text = "Start"
 metadata/_edit_use_anchors_ = true
 
 [node name="HowToPlayButton" type="Button" parent="."]
-offset_left = 417.0
-offset_top = 480.0
-offset_right = 778.0
-offset_bottom = 571.0
+offset_left = 376.0
+offset_top = 490.0
+offset_right = 776.0
+offset_bottom = 581.0
 theme_override_font_sizes/font_size = 60
 text = "How To Play"
 
@@ -335,9 +332,9 @@ Keep your core room alive! You can lose other rooms, but it's game over if your 
 layout_mode = 0
 offset_left = 832.0
 offset_top = 432.0
-offset_right = 1021.0
-offset_bottom = 536.0
-theme_override_font_sizes/font_size = 70
+offset_right = 1007.0
+offset_bottom = 523.0
+theme_override_font_sizes/font_size = 60
 text = "Close"
 
 [node name="Shield and gun example" type="Control" parent="HowToPlayPage"]
