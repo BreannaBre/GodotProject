@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 
 func set_powered(new_powered: bool) -> void:
 	powered = new_powered
+	if (set_powered):
+		return
 	if powered:
 		gun_picture.texture = POWERED_GUN
 	else:

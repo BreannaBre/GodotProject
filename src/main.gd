@@ -24,6 +24,9 @@ const MIN_DELAY := 1.0
 var spawn_delay: float
 var spawn_tick_acc: float
 
+var previous_room: Room
+var current_room: Room
+
 func _ready() -> void:
 	spawn_delay = INIT_DELAY
 	spawn_tick_acc=0
@@ -129,3 +132,9 @@ func add_enemy(enemy: PackedScene, coords: Vector2) -> Enemy:
 	new_enemy.set_pos(coords)
 	enemies.append(new_enemy)
 	return new_enemy
+
+func power_room(room: Room) -> void:
+	previous_room.set_powered(false)
+	previous_room = current_room
+	current_room = room
+	room.set_powered(true)
