@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0r005ufhmchs" path="res://assets/misc/wrench_and_screwdriver_white.png" id="5_d3wj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5dch"]
-radius = 45.0
+radius = 37.0
 
 [node name="GunneryRight" type="Node2D"]
 script = ExtResource("1_ntmc0")
@@ -35,7 +35,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.67451)
 z_index = 6
 z_as_relative = false
-scale = Vector2(0.304, 0.304)
+scale = Vector2(0.247, 0.247)
 texture = ExtResource("4_qxaln")
 
 [node name="RepairSign" type="Sprite2D" parent="Body"]
