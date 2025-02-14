@@ -9,6 +9,7 @@ const SHIELD_RIGHT_SCENE := preload("res://scenes/shield_right.tscn")
 const PENTAGON_SCENE := preload("res://scenes/pentagon.tscn")
 var rooms: Array[Room] = []
 var core_coords: Vector2
+var core_object: Core
 
 var mouse_joint := PhysicsServer2D.joint_create()
 var mouse_body: StaticBody2D
@@ -41,7 +42,7 @@ func _ready() -> void:
 	mouse_params.collide_with_bodies = false
 	mouse_params.collision_mask = 0b1000
 
-	var core := add_room(CORE_SCENE, core_coords)
+	core_object = add_room(CORE_SCENE, core_coords)
 	add_room(SHIELD_LEFT_SCENE, core_coords + Vector2(-181,0))
 	add_room(GUNNERY_LEFT_SCENE, core_coords + Vector2(-181,-181))
 	add_room(PENTAGON_SCENE, core_coords + Vector2(0,-181))
@@ -53,7 +54,7 @@ func _ready() -> void:
 	for room in rooms:
 		if room is Core:
 			continue
-		room.set_host(core.body)
+		room.set_host(core_object.body)
 
 	for room in rooms:
 		room.set_state(room.ROOM_STATE.ATTACHED)
@@ -66,6 +67,12 @@ func _ready() -> void:
 		room.pop_on()
 
 func _process(delta: float) -> void:
+	var new_enemies: Array[Enemy]
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.set_target(core_object.body.global_position)
+			new_enemies.append(enemy)
+	enemies = new_enemies
 	spawn_tick(delta)
 
 func _physics_process(_delta: float) -> void:
