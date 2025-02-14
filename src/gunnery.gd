@@ -61,7 +61,3 @@ func set_powered(new_powered: bool) -> void:
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)
-
-func press_button(_button: Area2D) -> void:
-	if state == ROOM_STATE.ATTACHED or state == ROOM_STATE.REPAIRING:
-		set_powered(not powered)

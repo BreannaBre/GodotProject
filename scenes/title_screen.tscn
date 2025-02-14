@@ -143,7 +143,6 @@ frame = 7
 frame_progress = 0.97513
 
 [node name="StartButton" type="Button" parent="."]
-z_index = 6
 offset_left = 480.0
 offset_top = 320.0
 offset_right = 699.0
@@ -155,6 +154,14 @@ theme_override_colors/icon_hover_color = Color(0.266575, 0.266575, 0.266575, 1)
 theme_override_font_sizes/font_size = 70
 text = "Start"
 metadata/_edit_use_anchors_ = true
+
+[node name="HowToPlayButton" type="Button" parent="."]
+offset_left = 417.0
+offset_top = 480.0
+offset_right = 778.0
+offset_bottom = 571.0
+theme_override_font_sizes/font_size = 60
+text = "How To Play"
 
 [node name="Logo" type="Node2D" parent="."]
 
@@ -266,8 +273,73 @@ label_settings = SubResource("LabelSettings_htkn4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HowToPlayPage" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 88.0
+
+[node name="Background" type="ColorRect" parent="HowToPlayPage"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -24.0
+offset_bottom = 16.0
+scale = Vector2(27.68, 14.72)
+color = Color(0.226707, 0.226707, 0.226707, 1)
+
+[node name="PlayerKeys" type="RichTextLabel" parent="HowToPlayPage"]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 400.0
+offset_bottom = 568.0
+theme_override_font_sizes/normal_font_size = 20
+text = "HOW TO PLAY
+
+You and your ship are trying to survive as long as possible! Work together to kill enemies and keep the ship relatively together.
+
+Keyboard Player
+   Movement: Left and right Arrow
+	Jump: Up Arrow 
+	Repair/Reattatch Ship Room: Down Arrow
+	Turn on Shield or Guns: (/)
+
+Mouse Player
+	Fire Gun: Left-Click
+	Move Ship Part: Right-Click"
+
+[node name="TIPS" type="RichTextLabel" parent="HowToPlayPage"]
+offset_left = 424.0
+offset_top = -24.0
+offset_right = 792.0
+offset_bottom = 568.0
+theme_override_font_sizes/normal_font_size = 20
+text = "TIPS
+
+You have limited power to divert to your guns and shields. Choose Wisely!
+
+Pieces may pop off over time. Work together to reattach pieces!
+
+Keep your core room alive! You can lose other rooms, but it's game over if your core runs out of health
+
+
+"
+
+[node name="CloseButton" type="Button" parent="HowToPlayPage"]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 432.0
+offset_right = 1021.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 70
+text = "Close"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_y0s31")
 autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="HowToPlayPage/CloseButton" to="." method="_on_close_button_pressed"]

@@ -57,10 +57,11 @@ func set_target(new_target: Vector2) -> void:
 	target = new_target
 
 func set_state(new_state: ROOM_STATE) -> void:
+	var main := get_parent()
 	state = new_state
 	if state == ROOM_STATE.DETACHED:
 		body.gravity_scale = 1
-		set_powered(false)
+		main.remove_room(self)
 		if repair_sign != null:
 			repair_sign.hide()
 	elif state == ROOM_STATE.ATTACHED:
@@ -69,7 +70,7 @@ func set_state(new_state: ROOM_STATE) -> void:
 			repair_sign.hide()
 	elif state == ROOM_STATE.REATTACHING:
 		body.gravity_scale = 0
-		set_powered(false)
+		main.remove_room(self)
 		if repair_sign != null:
 			repair_sign.show()
 	elif state == ROOM_STATE.REPAIRING:
@@ -128,9 +129,6 @@ func stop_welding(weldee: RID) -> void:
 			set_state(ROOM_STATE.DETACHED)
 			reattach_work = REATTACH_TIME
 			pop_off(false)
-
-func press_button(_pressed: Area2D) -> void:
-	pass
 
 func damage(amount: float) -> void:
 	breakaway += amount
