@@ -72,8 +72,11 @@ func _process(_delta: float) -> void:
 			var collider := result["collider"] as Area2D
 			var unsafe_pressed := collider.get_parent().get_parent()
 			assert(unsafe_pressed is Room, "Something is up with the button colliders. See style_guide.txt")
-			(unsafe_pressed as Room).press_button(collider)
-	
+			var pressed_room := unsafe_pressed as Room
+			if pressed_room.state == Room.ROOM_STATE.ATTACHED or pressed_room.state == Room.ROOM_STATE.REPAIRING:
+				var main := get_parent()
+				main.power_room(pressed_room)
+
 	var current_screen_size_y := get_viewport_rect().size.y
 	if position.y > current_screen_size_y*3:
 		reset_position()

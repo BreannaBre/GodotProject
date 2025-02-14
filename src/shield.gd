@@ -44,7 +44,3 @@ func set_powered(new_powered: bool) -> void:
 		button_sprite.texture = POWERED_BUTTON
 	else:
 		button_sprite.texture = UNPOWERED_BUTTON
-
-func press_button(_button: Area2D) -> void:
-	if state == ROOM_STATE.ATTACHED or state == ROOM_STATE.REPAIRING:
-		set_powered(not powered)
