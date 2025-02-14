@@ -133,8 +133,17 @@ func add_enemy(enemy: PackedScene, coords: Vector2) -> Enemy:
 	enemies.append(new_enemy)
 	return new_enemy
 
+func remove_room(room: Room) -> void:
+	if previous_room == room:
+		previous_room = null
+	if current_room == room:
+		current_room = null
+	room.set_powered(false)
+
 func power_room(room: Room) -> void:
-	previous_room.set_powered(false)
-	previous_room = current_room
+	if current_room != null && previous_room != null:
+		previous_room.set_powered(false)
+	if current_room != null:
+		previous_room = current_room
 	current_room = room
 	room.set_powered(true)

@@ -47,8 +47,6 @@ func fire(new_target: Vector2) -> void:
 
 func set_powered(new_powered: bool) -> void:
 	powered = new_powered
-	if (set_powered):
-		return
 	if powered:
 		gun_picture.texture = POWERED_GUN
 		if cur_arrow == null:
@@ -62,7 +60,3 @@ func set_powered(new_powered: bool) -> void:
 
 func _physics_process(delta: float) -> void:
 	default_physics_process(delta)
-
-func press_button(_button: Area2D) -> void:
-	if state == ROOM_STATE.ATTACHED or state == ROOM_STATE.REPAIRING:
-		set_powered(not powered)
