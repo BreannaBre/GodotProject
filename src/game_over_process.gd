@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func set_time(value: float) -> void:
 	timer = value
-	label.text = "Time Survived: " + str(value)
+	label.text = "Time Survived: " + str(value) + " seconds"
