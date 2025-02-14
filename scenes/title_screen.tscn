@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dw1hldrb7563r"]
+[gd_scene load_steps=34 format=3 uid="uid://dw1hldrb7563r"]
 
 [ext_resource type="Script" path="res://src/title_screen.gd" id="1_li7gw"]
 [ext_resource type="Texture2D" uid="uid://djiiknuwh4t66" path="res://assets/background_starry.png" id="1_xfhsh"]
@@ -18,7 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://b5ya32qlvrwmo" path="res://assets/orange_planet_frames/orange_planet_frame0005.png" id="16_v702j"]
 [ext_resource type="Texture2D" uid="uid://b7fdii3ek7vyf" path="res://assets/orange_planet_frames/orange_planet_frame0006.png" id="17_hio3u"]
 [ext_resource type="Texture2D" uid="uid://b8eerk4g2c7c8" path="res://assets/orange_planet_frames/orange_planet_frame0007.png" id="18_mabck"]
+[ext_resource type="Texture2D" uid="uid://imbgo6yp3fvw" path="res://assets/misc/bow_charging.svg" id="19_2r6gp"]
 [ext_resource type="AudioStream" uid="uid://ds5f6s628lyk4" path="res://assets/menu_music.wav" id="19_y0s31"]
+[ext_resource type="Texture2D" uid="uid://ciamveix6nf4j" path="res://assets/misc/bow_ready.svg" id="20_0sjks"]
+[ext_resource type="Texture2D" uid="uid://cshiip1indddc" path="res://assets/misc/shield_ready.svg" id="21_yxnwm"]
+[ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="22_4tugg"]
+[ext_resource type="Texture2D" uid="uid://djgjcuaahhrfm" path="res://assets/rooms/heart_ship_core.svg" id="23_x5pyo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ao57"]
 animations = [{
@@ -322,7 +327,7 @@ text = "TIPS
 
 You have limited power to divert to your guns and shields. Choose Wisely!
 
-Pieces may pop off over time. While one player drags it back into place, the other can hold repair to reattach it.
+Pieces may pop off over time. While one player drags it back into place, the other can hold (repair) to reattach it.
 
 Keep your core room alive! You can lose other rooms, but it's game over if your core runs out of health."
 
@@ -334,6 +339,49 @@ offset_right = 1021.0
 offset_bottom = 536.0
 theme_override_font_sizes/font_size = 70
 text = "Close"
+
+[node name="Shield and gun example" type="Control" parent="HowToPlayPage"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Gun" type="Sprite2D" parent="HowToPlayPage/Shield and gun example"]
+position = Vector2(872, 40)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("19_2r6gp")
+
+[node name="GunNotPowered" type="Sprite2D" parent="HowToPlayPage/Shield and gun example"]
+position = Vector2(976, 40)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("20_0sjks")
+
+[node name="GunAndShieldDesc" type="RichTextLabel" parent="HowToPlayPage/Shield and gun example"]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 104.0
+offset_right = 1064.0
+offset_bottom = 392.0
+text = "If the bow symbol is drawn back, that means the weapon has power.
+
+
+
+
+The same is true when the shield is filled in."
+
+[node name="Shield" type="Sprite2D" parent="HowToPlayPage/Shield and gun example"]
+position = Vector2(976, 222)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("21_yxnwm")
+
+[node name="ShieldNotPowered" type="Sprite2D" parent="HowToPlayPage/Shield and gun example"]
+position = Vector2(872, 222)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("22_4tugg")
+
+[node name="CoreRoom" type="Sprite2D" parent="HowToPlayPage"]
+position = Vector2(577, 432)
+scale = Vector2(0.18431, 0.18431)
+texture = ExtResource("23_x5pyo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_y0s31")
