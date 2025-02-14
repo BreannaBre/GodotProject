@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		var new_rotation := body.transform.origin.angle_to_point(target)
 		gun_picture.transform = Transform2D(new_rotation, GUN_SCALE, 0, Vector2(0,0))
 
-func fire(new_target: Vector2) -> void:
+func fire(_new_target: Vector2) -> void:
 	if not powered:
 		return
 

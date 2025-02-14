@@ -4,13 +4,11 @@ extends Node2D
 var target := Vector2(0,0)
 var body: RigidBody2D
 
-# This sets up defaults for the RigidBody2D, so make sure body has been
-# properly assigned!
 func default_ready() -> void:
 	body.gravity_scale = 0
 	body.lock_rotation = true
 	body.collision_layer = 0b0000_0100
-	body.collision_mask  = 0b0001_1100
+	body.collision_mask  = 0b0001_1000
 	add_to_group("enemies")
 
 func set_target(new_target: Vector2) -> void:

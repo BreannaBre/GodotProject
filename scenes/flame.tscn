@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp4l85naudxer"]
+
+[ext_resource type="Script" path="res://src/flame.gd" id="1_0no6i"]
+[ext_resource type="Texture2D" uid="uid://bif3xo5npfras" path="res://assets/misc/fire_frame_1.svg" id="2_oxtko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xuxj"]
+size = Vector2(20, 15)
+
+[node name="Flame" type="Node2D"]
+script = ExtResource("1_0no6i")
+
+[node name="Body" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 8
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_5xuxj")
+
+[node name="Arrow" type="Sprite2D" parent="Body"]
+z_index = 8
+z_as_relative = false
+position = Vector2(-1, -2)
+rotation = -0.706717
+scale = Vector2(0.0617284, 0.05)
+texture = ExtResource("2_oxtko")
+
+[connection signal="body_entered" from="Body" to="." method="_on_body_entered"]

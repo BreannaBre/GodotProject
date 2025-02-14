@@ -37,5 +37,5 @@ func thrust(delta: float) -> void:
 		impulse += Vector2(shake_dir, 0)
 	body.apply_impulse(impulse)
 
-func damage(amount: float) -> void:
+func damage(_amount: float) -> void:
 	pass
