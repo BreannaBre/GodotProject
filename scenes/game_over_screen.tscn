@@ -58,11 +58,11 @@ theme_override_font_sizes/font_size = 80
 text = "Time Survived: 80 seconds"
 
 [node name="RestartButton" type="Button" parent="."]
-offset_left = 456.0
+offset_left = 461.0
 offset_top = 464.0
-offset_right = 709.0
-offset_bottom = 568.0
-theme_override_font_sizes/font_size = 70
+offset_right = 691.0
+offset_bottom = 555.0
+theme_override_font_sizes/font_size = 60
 text = "Restart
 "
 
