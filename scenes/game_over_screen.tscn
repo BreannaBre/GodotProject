@@ -59,6 +59,7 @@ theme_override_font_sizes/font_size = 80
 text = "Time Survived: 80 seconds"
 
 [node name="EndPlayer" type="AudioStreamPlayer2D" parent="."]
+
 [node name="RestartButton" type="Button" parent="."]
 offset_left = 461.0
 offset_top = 464.0

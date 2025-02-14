@@ -17,7 +17,7 @@ func _ready() -> void:
 	var sprite_node := get_node("%Fishcat")
 	assert(sprite_node is Sprite2D, "Player sprite was not Sprite2D")
 	sprite = sprite_node as Sprite2D
-	
+
 	jump_player = get_node("%JumpPlayer")
 
 	# we only want to collide with the room areas
