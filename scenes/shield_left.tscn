@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://b6l5ks2p5r2qk" path="res://assets/misc/shield_charging.svg" id="4_3e3wl"]
 [ext_resource type="Texture2D" uid="uid://b0r005ufhmchs" path="res://assets/misc/wrench_and_screwdriver_white.png" id="5_vbkaf"]
 
-[node name="ShieldLeft" type="Node2D"]
+[node name="ShieldLeft" type="Node2D" node_paths=PackedStringArray("shield_player")]
 script = ExtResource("1_0mx10")
 force = -4.0
+shield_player = NodePath("ShieldPlayer")
 offset_center = Vector2(50, 50)
 
 [node name="Body" type="RigidBody2D" parent="."]
@@ -62,3 +63,5 @@ z_as_relative = false
 position = Vector2(11, -64)
 scale = Vector2(0.1825, 0.1825)
 texture = ExtResource("5_vbkaf")
+
+[node name="ShieldPlayer" type="AudioStreamPlayer2D" parent="."]

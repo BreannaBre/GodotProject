@@ -15,10 +15,14 @@ const FLAME_SPEED := 500.0
 const RANGE_SQUARED := 2000.0 * 2000.0
 var flames: Array[Flame]
 
+var flame_sound := preload("res://assets/sounds/flame.mp3")
+var flame_player: AudioStreamPlayer2D
+
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
 	assert(body_unsafe is RigidBody2D, "Somebody's been mucking with the heart burn nodes")
 	body = body_unsafe as RigidBody2D
+	flame_player = get_node("%FlamePlayer")
 	default_ready()
 
 func _process(_delta: float) -> void:
@@ -62,6 +66,10 @@ func _physics_process(_delta: float) -> void:
 	body.apply_central_force(force)
 
 func shoot_projectile() -> void:
+	if !flame_player.is_playing():
+		flame_player.stream = flame_sound
+		flame_player.play()
+
 	var new_flame := FLAME.instantiate() as Flame
 	add_child(new_flame)
 	var angle := body.transform.origin.angle_to_point(target)

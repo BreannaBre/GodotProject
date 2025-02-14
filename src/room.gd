@@ -19,6 +19,9 @@ var powered := false
 var breakaway_visual := Color(1,1,1,1)
 @export var offset_center := Vector2(0, 0)
 
+var pop_sound := preload("res://assets/sounds/pop.mp3")
+var pop_player: AudioStreamPlayer2D
+
 # This sets up defaults for the RigidBody2D, so make sure body has been
 # properly assigned!
 func default_ready() -> void:
@@ -28,6 +31,7 @@ func default_ready() -> void:
 	body.collision_layer = 0b1000
 	body.collision_mask  = 0b1100
 	tube = PhysicsServer2D.joint_create()
+	pop_player = get_parent().get_node("%PopPlayer")
 
 func default_process(delta: float) -> void:
 	if state == ROOM_STATE.REATTACHING:
@@ -88,6 +92,9 @@ func set_powered(_new_powered: bool) -> void:
 	pass
 
 func pop_off(violent: bool) -> void:
+	if !pop_player.is_playing():
+		pop_player.stream = pop_sound
+		pop_player.play()
 	reattach_work = REATTACH_TIME
 	PhysicsServer2D.joint_clear(tube)
 	if violent:

@@ -10,10 +10,15 @@ var weld_picker_params := PhysicsPointQueryParameters2D.new()
 var button_picker_params := PhysicsPointQueryParameters2D.new()
 var current_welded: Room
 
+var jump_sound := preload("res://assets/sounds/jump.mp3")
+var jump_player: AudioStreamPlayer2D
+
 func _ready() -> void:
 	var sprite_node := get_node("%Fishcat")
 	assert(sprite_node is Sprite2D, "Player sprite was not Sprite2D")
 	sprite = sprite_node as Sprite2D
+	
+	jump_player = get_node("%JumpPlayer")
 
 	# we only want to collide with the room areas
 	weld_picker_params.collide_with_areas = true
@@ -31,6 +36,9 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_pressed("Player1Jump") and is_on_floor():
+		if !jump_player.is_playing():
+			jump_player.stream = jump_sound
+			jump_player.play()
 		velocity.y = JUMP_VELOCITY
 
 	#reset hoizontal velocity

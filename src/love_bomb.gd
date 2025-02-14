@@ -8,6 +8,9 @@ const TURN := 60
 const EXPLODE_FORCE := 1
 const DAMAGE_MULT := 0.1
 
+var explode_sound := preload("res://assets/sounds/explode.mp3")
+var explode_player: AudioStreamPlayer2D
+
 func _ready() -> void:
 	var body_unsafe := get_node("%Body")
 	assert(body_unsafe is RigidBody2D, "Somebody's been mucking with the angry face nodes")
@@ -15,6 +18,7 @@ func _ready() -> void:
 	var sprite_unsafe := get_node("%Sprite")
 	assert(sprite_unsafe is Sprite2D, "Angry face sprite error")
 	sprite = sprite_unsafe as Sprite2D
+	explode_player = get_parent().get_node("%ExplodePlayer")
 	default_ready()
 
 func _physics_process(_delta: float) -> void:
@@ -43,6 +47,9 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(_other: Node) -> void:
 	var ship := get_tree().get_nodes_in_group("rooms")
+	if !explode_player.is_playing():
+		explode_player.stream = explode_sound
+		explode_player.play()
 	for room in ship:
 		# idk how to assert this safely
 		assert(room is Room, "Don't touch the rooms group please!")

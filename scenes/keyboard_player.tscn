@@ -22,3 +22,7 @@ texture = ExtResource("3_bkodw")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_emn4l")
+
+[node name="JumpPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = 10.0

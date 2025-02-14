@@ -9,8 +9,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7n0b"]
 radius = 37.0
 
-[node name="GunneryLeft" type="Node2D"]
+[node name="GunneryLeft" type="Node2D" node_paths=PackedStringArray("sound_player")]
 script = ExtResource("1_l737n")
+sound_player = NodePath("BulletPlayer")
 
 [node name="Body" type="RigidBody2D" parent="."]
 unique_name_in_owner = true
@@ -59,3 +60,5 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ButtonArea"]
 shape = SubResource("CircleShape2D_p7n0b")
+
+[node name="BulletPlayer" type="AudioStreamPlayer2D" parent="."]

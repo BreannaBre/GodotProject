@@ -15,13 +15,13 @@ var mouse_body: StaticBody2D
 var mouse_dragging := false
 var mouse_params := PhysicsPointQueryParameters2D.new()
 
-const ANGRY_FACE_SCENE := preload("res://scenes/love_bomb.tscn")
+const LOVE_BOMB_SCENE := preload("res://scenes/love_bomb.tscn")
 const HEART_BURN_SCENE := preload("res://scenes/heart_burn.tscn")
 var enemies: Array[Enemy] = []
 var windowSize := DisplayServer.screen_get_size()
 const SPAWN_DELTA := 0.0625
-const INIT_DELAY := 6.0
-const MIN_DELAY := 3.0
+const INIT_DELAY := 1.0
+const MIN_DELAY := 1.0
 var spawn_delay: float
 var spawn_tick_acc: float
 
@@ -123,7 +123,7 @@ func spawn_tick(delta: float) -> void:
 		var location := windowSize.y/2 * Vector2.from_angle(randf_range(-PI, 0))
 		location.x = windowSize.x/2 * signf(location.x)
 		var new_enemy := add_enemy(
-			[HEART_BURN_SCENE, ANGRY_FACE_SCENE].pick_random(),
+			[HEART_BURN_SCENE, LOVE_BOMB_SCENE].pick_random() as PackedScene,
 			location + core_coords
 		)
 		new_enemy.set_target(core_coords)
@@ -145,6 +145,7 @@ func remove_room(room: Room) -> void:
 	room.set_powered(false)
 
 func power_room(room: Room) -> void:
+	if (room.powered): return
 	if current_room != null && previous_room != null:
 		previous_room.set_powered(false)
 	if current_room != null:
